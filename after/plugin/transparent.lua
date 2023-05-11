@@ -5,6 +5,9 @@ require("transparent").setup({
     'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
     'SignColumn', 'CursorLineNr', 'EndOfBuffer',
   },
-  extra_groups = {}, -- table: additional groups that should be cleared
+  extra_groups = {
+      "NormalFloat",
+      "NvimTreeNormal"
+  }, -- table: additional groups that should be cleared
   exclude_groups = {}, -- table: groups you don't want to clear
 })
