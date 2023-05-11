@@ -1,1 +1,2 @@
-print("Hello from aziznal's Lua directory!")
+require("aziznal.set")
+require("aziznal.remap")
