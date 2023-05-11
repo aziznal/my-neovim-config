@@ -51,6 +51,8 @@ return require('packer').startup(function(use)
         },
 
         use ('github/copilot.vim'),
+
+        use ('theprimeagen/Vim-be-good'),
     }
 }
 end)
