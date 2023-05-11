@@ -53,6 +53,11 @@ return require('packer').startup(function(use)
         use ('github/copilot.vim'),
 
         use ('theprimeagen/Vim-be-good'),
+
+        use({
+            "iamcco/markdown-preview.nvim",
+            run = function() vim.fn["mkdp#util#install"]() end,
+        })
     }
 }
 end)
