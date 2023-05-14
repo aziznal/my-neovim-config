@@ -59,7 +59,11 @@ return require('packer').startup(function(use)
             run = function() vim.fn["mkdp#util#install"]() end,
         }),
 
-        use('xiyaowong/transparent.nvim')
+        use('xiyaowong/transparent.nvim'),
+
+        -- prettier
+        use('jose-elias-alvarez/null-ls.nvim'),
+        use('MunifTanjim/prettier.nvim'),
     }
 }
 end)
