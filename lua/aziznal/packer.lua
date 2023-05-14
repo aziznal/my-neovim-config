@@ -64,6 +64,9 @@ return require('packer').startup(function(use)
         -- prettier
         use('jose-elias-alvarez/null-ls.nvim'),
         use('MunifTanjim/prettier.nvim'),
+        
+        -- Recent project explorer
+        use ('ahmedkhalf/project.nvim'),
     }
 }
 end)
