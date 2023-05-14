@@ -7,3 +7,8 @@ vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
 
+
+-- recent projects (integration from project explorer plugin)
+require('telescope').load_extension('projects')
+
+vim.keymap.set('n', '<leader><C-r>', function() require'telescope'.extensions.projects.projects{} end)
