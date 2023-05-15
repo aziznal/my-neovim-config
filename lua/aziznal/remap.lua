@@ -24,5 +24,3 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
--- trigger nvim-tree focus file
-vim.keymap.set("n", "<leader><C-e>", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })

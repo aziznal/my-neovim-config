@@ -43,12 +43,13 @@ return require('packer').startup(function(use)
         {'L3MON4D3/LuaSnip'},     -- Required
 
 
-        use {
-            'nvim-tree/nvim-tree.lua',
-            requires = {
-                'nvim-tree/nvim-web-devicons', -- optional
-            },
-        },
+        -- Nvim tree (disabled)
+        -- use {
+            -- 'nvim-tree/nvim-tree.lua',
+            -- requires = {
+            --    'nvim-tree/nvim-web-devicons', -- optional
+          --  },
+        --},
 
         use ('github/copilot.vim'),
 
