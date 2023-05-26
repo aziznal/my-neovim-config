@@ -68,6 +68,9 @@ return require('packer').startup(function(use)
         
         -- Recent project explorer
         use ('ahmedkhalf/project.nvim'),
+
+        -- Show git changes in gutter
+        use ('airblade/vim-gitgutter'),
     }
 }
 end)
