@@ -1,6 +1,6 @@
--- enable line numbers and make em relative
 vim.opt.guicursor=""
 
+-- enable line numbers and make em relative
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -28,3 +28,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 
+-- make new splits go below and to the right of the current pane
+vim.cmd('set splitright splitbelow')
+
+-- make vertical split filler just empty (is '|' by default)
+vim.cmd('set fillchars+=vert:\\ ')
