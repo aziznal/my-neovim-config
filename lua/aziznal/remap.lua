@@ -24,3 +24,14 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
+-- move between splits more easily
+vim.keymap.set("n", "<C-h>", "<C-w>h");
+vim.keymap.set("n", "<C-j>", "<C-w>j");
+vim.keymap.set("n", "<C-k>", "<C-w>k");
+vim.keymap.set("n", "<C-l>", "<C-w>l");
+
+-- resize panes more easily
+vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>", {silent = true, noremap = true})
+vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>", {silent = true, noremap = true})
+vim.keymap.set("n", "<C-Up>", ":resize +3<CR>", {silent = true, noremap = true})
+vim.keymap.set("n", "<C-Down>", ":resize -3<CR>", {silent = true, noremap = true})
