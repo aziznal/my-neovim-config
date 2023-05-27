@@ -74,6 +74,8 @@ return require('packer').startup(function(use)
 
         -- cursor-line for highlighting matching words and current line
         use ('yamatsum/nvim-cursorline'),
+
+        use ('f-person/git-blame.nvim'),
     }
 }
 end)
