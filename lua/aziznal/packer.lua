@@ -76,6 +76,8 @@ return require('packer').startup(function(use)
         use ('yamatsum/nvim-cursorline'),
 
         use ('f-person/git-blame.nvim'),
+
+        use ('numToStr/Comment.nvim'),
     }
 }
 end)
