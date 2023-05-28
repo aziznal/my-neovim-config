@@ -1,0 +1,3 @@
+require('guess-indent').setup {
+
+}
