@@ -78,6 +78,9 @@ return require('packer').startup(function(use)
         use ('f-person/git-blame.nvim'),
 
         use ('numToStr/Comment.nvim'),
+
+        -- auto detect indentation
+        use ('nmac427/guess-indent.nvim'),
     }
 }
 end)
