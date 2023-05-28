@@ -81,6 +81,8 @@ return require('packer').startup(function(use)
 
         -- auto detect indentation
         use ('nmac427/guess-indent.nvim'),
+
+        use ('tpope/vim-fugitive'),
     }
 }
 end)
