@@ -18,7 +18,11 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 })
 
 lsp.setup_nvim_cmp({
-	mappings = cmp_mappings
+	mappings = cmp_mappings,
+
+    completion = {
+        autocomplete = {},
+    }
 })
 
 -- disables "sign icons"?
