@@ -72,9 +72,6 @@ return require('packer').startup(function(use)
         -- Show git changes in gutter
         use ('airblade/vim-gitgutter'),
 
-        -- cursor-line for highlighting matching words and current line
-        use ('yamatsum/nvim-cursorline'),
-
         use ('f-person/git-blame.nvim'),
 
         use ('numToStr/Comment.nvim'),
