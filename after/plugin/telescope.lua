@@ -1,11 +1,14 @@
 local builtin = require('telescope.builtin')
 
 local function find_files()
-	builtin.find_files { previewer= false }
+	builtin.find_files { 
+		previewer = false,
+		hidden = true,
+	}
 end
 
 local function find_git_files()
-	builtin.git_files { previewer= false }
+	builtin.git_files { previewer = false }
 end
 
 vim.keymap.set('n', '<leader>pf', find_files , {})
@@ -19,4 +22,8 @@ end)
 -- recent projects (integration from project explorer plugin)
 require('telescope').load_extension('projects')
 
-vim.keymap.set('n', '<leader><C-r>', function() require'telescope'.extensions.projects.projects{} end)
+function show_recent_projects() 
+	require'telescope'.extensions.projects.projects{} 
+end
+
+vim.keymap.set('n', '<leader><C-r>', show_recent_projects)
