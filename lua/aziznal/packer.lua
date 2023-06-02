@@ -83,7 +83,9 @@ return require('packer').startup(function(use)
 
         use { 'nvim-lualine/lualine.nvim' },
 
-        use { 'akinsho/bufferline.nvim', tag='*' }
+        use { 'akinsho/bufferline.nvim', tag='*' },
+
+        use { 'norcalli/nvim-colorizer.lua' },
     }
 }
 end)
