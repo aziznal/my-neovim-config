@@ -86,6 +86,8 @@ return require('packer').startup(function(use)
         use { 'akinsho/bufferline.nvim', tag='*' },
 
         use { 'norcalli/nvim-colorizer.lua' },
+
+        use { 'kazhala/close-buffers.nvim' },
     }
 }
 end)
