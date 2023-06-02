@@ -81,7 +81,9 @@ return require('packer').startup(function(use)
 
         use ('tpope/vim-fugitive'),
 
-        use { 'nvim-lualine/lualine.nvim' }
+        use { 'nvim-lualine/lualine.nvim' },
+
+        use { 'akinsho/bufferline.nvim', tag='*' }
     }
 }
 end)
