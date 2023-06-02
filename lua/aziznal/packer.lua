@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
     }
-    
+
     -- required for telescope
     use ('nvim-lua/plenary.nvim')
 
@@ -17,8 +17,6 @@ return require('packer').startup(function(use)
     })
 
     use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-
-    use ('ThePrimeagen/harpoon')
 
     use ('mbbill/undotree')
 
@@ -41,53 +39,53 @@ return require('packer').startup(function(use)
         {'hrsh7th/nvim-cmp'},     -- Required
         {'hrsh7th/cmp-nvim-lsp'}, -- Required
         {'L3MON4D3/LuaSnip'},     -- Required
+    };
 
+    -- Nvim tree (disabled)
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional
+        },
+    };
 
-        -- Nvim tree (disabled)
-        -- use {
-            -- 'nvim-tree/nvim-tree.lua',
-            -- requires = {
-            --    'nvim-tree/nvim-web-devicons', -- optional
-          --  },
-        --},
+    use ('zbirenbaum/copilot.lua');
 
-        use ('zbirenbaum/copilot.lua'),
+    use ('theprimeagen/Vim-be-good');
 
-        use ('theprimeagen/Vim-be-good'),
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    });
 
-        use({
-            "iamcco/markdown-preview.nvim",
-            run = function() vim.fn["mkdp#util#install"]() end,
-        }),
+    use('xiyaowong/transparent.nvim');
 
-        use('xiyaowong/transparent.nvim'),
+    -- prettier
+    use('jose-elias-alvarez/null-ls.nvim');
+    use('MunifTanjim/prettier.nvim');
 
-        -- prettier
-        use('jose-elias-alvarez/null-ls.nvim'),
-        use('MunifTanjim/prettier.nvim'),
+    -- Recent project explorer
+    use ('ahmedkhalf/project.nvim');
 
-        -- Recent project explorer
-        use ('ahmedkhalf/project.nvim'),
+    -- Show git changes in gutter
+    use ('airblade/vim-gitgutter');
 
-        -- Show git changes in gutter
-        use ('airblade/vim-gitgutter'),
+    use ('f-person/git-blame.nvim');
 
-        use ('f-person/git-blame.nvim'),
+    use ('numToStr/Comment.nvim');
 
-        use ('numToStr/Comment.nvim'),
+    -- auto detect indentation
+    use ('nmac427/guess-indent.nvim');
 
-        -- auto detect indentation
-        use ('nmac427/guess-indent.nvim'),
+    use ('tpope/vim-fugitive');
 
-        use ('tpope/vim-fugitive'),
+    use { 'nvim-lualine/lualine.nvim' };
 
-        use { 'nvim-lualine/lualine.nvim' },
+    use { 'akinsho/bufferline.nvim', tag='*' };
 
-        use { 'akinsho/bufferline.nvim', tag='*' },
+    use { 'norcalli/nvim-colorizer.lua' };
 
-        use { 'norcalli/nvim-colorizer.lua' },
+    use { 'kazhala/close-buffers.nvim' };
 
-        use { 'kazhala/close-buffers.nvim' },
-    }
 }
 end)
