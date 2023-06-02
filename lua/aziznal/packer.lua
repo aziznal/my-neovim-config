@@ -80,6 +80,8 @@ return require('packer').startup(function(use)
         use ('nmac427/guess-indent.nvim'),
 
         use ('tpope/vim-fugitive'),
+
+        use { 'nvim-lualine/lualine.nvim' }
     }
 }
 end)
