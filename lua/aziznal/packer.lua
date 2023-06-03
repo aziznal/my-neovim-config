@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
         {'L3MON4D3/LuaSnip'},     -- Required
     };
 
-    -- Nvim tree (disabled)
+    -- Nvim tree
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -53,11 +53,13 @@ return require('packer').startup(function(use)
 
     use ('theprimeagen/Vim-be-good');
 
+    -- markdown preview in the browser
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     });
 
+    -- transparency support in neovim (for adding background image, etc.)
     use('xiyaowong/transparent.nvim');
 
     -- prettier
@@ -70,21 +72,28 @@ return require('packer').startup(function(use)
     -- Show git changes in gutter
     use ('airblade/vim-gitgutter');
 
+    -- show inline git blame
     use ('f-person/git-blame.nvim');
 
+    -- toggle comments in code
     use ('numToStr/Comment.nvim');
 
     -- auto detect indentation
     use ('nmac427/guess-indent.nvim');
 
+    -- git support in vim 
     use ('tpope/vim-fugitive');
 
+    -- custom status line
     use { 'nvim-lualine/lualine.nvim' };
 
+    -- line for showing open buffers in tabline
     use { 'akinsho/bufferline.nvim', tag='*' };
 
+    -- add color to hex codes
     use { 'norcalli/nvim-colorizer.lua' };
 
+    -- util for closing buffers easily
     use { 'kazhala/close-buffers.nvim' };
 
 }
