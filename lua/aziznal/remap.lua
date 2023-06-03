@@ -35,3 +35,6 @@ vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>", {silent = true, norem
 vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>", {silent = true, noremap = true})
 vim.keymap.set("n", "<C-Up>", ":resize +3<CR>", {silent = true, noremap = true})
 vim.keymap.set("n", "<C-Down>", ":resize -3<CR>", {silent = true, noremap = true})
+
+-- Set esc to jj
+vim.keymap.set("i", "jj", "<ESC>")
