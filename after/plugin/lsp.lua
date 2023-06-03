@@ -46,4 +46,16 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+-- lua ls config
+require('lspconfig').lua_ls.setup({
+	settings = {
+		Lua = {
+			-- disable the undefined vim global issue
+			diagnostics = {
+				globals = {'vim'},
+			},
+		},
+	},
+})
+
 lsp.setup()
