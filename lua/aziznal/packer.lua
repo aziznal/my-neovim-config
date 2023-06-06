@@ -16,7 +16,7 @@ return require('packer').startup(function(use)
         'projekt0n/github-nvim-theme', tag = 'v0.0.7',
     })
 
-    use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use ('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     use ('mbbill/undotree')
 
