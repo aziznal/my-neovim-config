@@ -58,4 +58,7 @@ require('lspconfig').lua_ls.setup({
 	},
 })
 
+-- angular ls setup
+require('lspconfig').angularls.setup{}
+
 lsp.setup()
