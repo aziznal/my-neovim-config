@@ -30,7 +30,7 @@ end)
 -- recent projects (integration from project explorer plugin)
 require('telescope').load_extension('projects')
 
-function show_recent_projects() 
+local function show_recent_projects() 
 	require'telescope'.extensions.projects.projects{} 
 end
 
