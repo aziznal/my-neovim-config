@@ -59,6 +59,8 @@ require('lspconfig').lua_ls.setup({
 })
 
 -- angular ls setup
-require('lspconfig').angularls.setup{}
+require('lspconfig').angularls.setup{
+	root_dir = require('lspconfig/util').root_pattern('project.json', 'angular.json'),
+}
 
 lsp.setup()
