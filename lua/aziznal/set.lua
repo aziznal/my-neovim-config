@@ -28,6 +28,11 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "120"
 
+-- ignore case when searching
+vim.opt.ignorecase = true
+-- automatically switch to case-sensitive if a capital letter is used
+vim.opt.smartcase = true
+
 -- make new splits go below and to the right of the current pane
 vim.cmd('set splitright splitbelow')
 
