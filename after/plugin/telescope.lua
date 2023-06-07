@@ -15,12 +15,13 @@ local function list_buffers()
 	builtin.buffers {
 		sort_lastused = true,
 		previewer = false,
+		initial_mode = "normal",
 	}
 end
 
 vim.keymap.set('n', '<leader>pf', find_files , {})
 vim.keymap.set('n', '<C-p>', find_git_files , {})
-vim.keymap.set('n', '<leader>pb', list_buffers , {})
+vim.keymap.set('n', '<C-Tab>', list_buffers , {})
 
 -- fuzzy file finding
 vim.keymap.set('n', '<leader>ps', function()
