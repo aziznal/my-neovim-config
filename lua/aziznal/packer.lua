@@ -64,10 +64,6 @@ return require('packer').startup(function(use)
     -- transparency support in neovim (for adding background image, etc.)
     use('xiyaowong/transparent.nvim');
 
-    -- prettier
-    use('jose-elias-alvarez/null-ls.nvim');
-    use('MunifTanjim/prettier.nvim');
-
     -- Recent project explorer
     use ('ahmedkhalf/project.nvim');
 
@@ -98,5 +94,6 @@ return require('packer').startup(function(use)
     -- util for closing buffers easily
     use { 'kazhala/close-buffers.nvim' };
 
+    use { 'mhartington/formatter.nvim' }
 }
 end)
