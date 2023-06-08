@@ -3,7 +3,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Main Shortcuts:
--- <leader><C-e> - toggle tree with current file selected 
+-- <leader><C-e> - toggle tree with current file selected
 -- a - create a file or directory
 -- d - remove a file or directory
 -- r - rename a file or directory
@@ -17,14 +17,12 @@ vim.g.loaded_netrwPlugin = 1
 
 require("nvim-tree").setup {
     sort_by = "case_sensitive",
-
     view = {
-        width = 60,
+        width = 60
     },
-
     filters = {
-        dotfiles = false,
+        dotfiles = false
     }
 }
 
-vim.keymap.set("n", "<leader><C-e>", ":NvimTreeFindFileToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader><C-e>", ":NvimTreeFindFileToggle<CR>", {noremap = true, silent = true})
