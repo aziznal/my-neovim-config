@@ -7,17 +7,20 @@ local function formatWithPrettier()
     }
 end
 
+-- format lua
+local function formatLuaWithLuafmt()
+    return {
+        exe = "luafmt",
+        args = {"--indent-count", 4, "--stdin"},
+        stdin = true
+    }
+end
+
 require("formatter").setup {
     filetype = {
         -- must have luafmt for this to work. install via `npm install -g lua-fmt`
         lua = {
-            function()
-                return {
-                    exe = "luafmt",
-                    args = {"--indent-count", 4, "--stdin"},
-                    stdin = true
-                }
-            end
+            formatLuaWithLuafmt
         },
         typescript = {
             formatWithPrettier
@@ -37,6 +40,9 @@ require("formatter").setup {
         css = {
             formatWithPrettier
         },
+        scss = {
+            formatWithPrettier
+        },
         json = {
             formatWithPrettier
         },
@@ -48,6 +54,17 @@ require("formatter").setup {
         }
     }
 }
+
+-- Format on save
+vim.api.nvim_exec(
+    [[
+        augroup FormatAutogroup
+            autocmd!
+            autocmd BufWritePost * FormatWrite
+        augroup END
+    ]],
+    true
+)
 
 -- leader f to format
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>FormatWrite<CR>", {noremap = true, silent = true})

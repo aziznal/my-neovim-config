@@ -1,13 +1,10 @@
 -- termguicolors already set in sets.lua
 
-require('bufferline').setup {
+require("bufferline").setup {
     options = {
         numbers = "ordinal",
-
         diagnostics = "nvim_lsp",
-
         separator_style = "slope",
-
         offsets = {
             {
                 filetype = "NvimTree",
@@ -15,22 +12,21 @@ require('bufferline').setup {
                 highlight = "Directory",
                 separator = true -- use a "true" to enable the default, or set your own character
             }
-        },
-    },
+        }
+    }
 }
 
 -- Keybindings
-local map = vim.keymap.set 
-local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
+local opts = {noremap = true, silent = true}
 
-map('n', '<leader>1', ':BufferLineGoToBuffer 1<CR>', opts)
-map('n', '<leader>2', ':BufferLineGoToBuffer 2<CR>', opts)
-map('n', '<leader>3', ':BufferLineGoToBuffer 3<CR>', opts)
-map('n', '<leader>4', ':BufferLineGoToBuffer 4<CR>', opts)
-map('n', '<leader>5', ':BufferLineGoToBuffer 5<CR>', opts)
-map('n', '<leader>6', ':BufferLineGoToBuffer 6<CR>', opts)
-map('n', '<leader>7', ':BufferLineGoToBuffer 7<CR>', opts)
-map('n', '<leader>8', ':BufferLineGoToBuffer 8<CR>', opts)
-map('n', '<leader>9', ':BufferLineGoToBuffer 9<CR>', opts)
-map('n', '<leader>$', ':BufferLineGoToBuffer -1<CR>', opts)
-
+map("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
+map("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
+map("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
+map("n", "<leader>4", ":BufferLineGoToBuffer 4<CR>", opts)
+map("n", "<leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
+map("n", "<leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
+map("n", "<leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
+map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
+map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
+map("n", "<leader>$", ":BufferLineGoToBuffer -1<CR>", opts)

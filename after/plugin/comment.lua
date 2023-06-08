@@ -1,4 +1,4 @@
-require('Comment').setup()
+require("Comment").setup()
 
 -- Basic Mappings
 -- `gcc` - Toggles the current line using linewise comment
