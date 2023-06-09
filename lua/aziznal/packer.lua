@@ -46,48 +46,63 @@ return require("packer").startup(
                 {"hrsh7th/nvim-cmp"}, -- Required
                 {"hrsh7th/cmp-nvim-lsp"}, -- Required
                 {"L3MON4D3/LuaSnip"} -- Required
-            },
-            -- Nvim tree
-            use {
-                "nvim-tree/nvim-tree.lua",
-                requires = {
-                    "nvim-tree/nvim-web-devicons" -- optional
-                }
-            },
-            use("zbirenbaum/copilot.lua"),
-            use("theprimeagen/Vim-be-good"),
-            -- markdown preview in the browser
-            use(
-                {
-                    "iamcco/markdown-preview.nvim",
-                    run = function()
-                        vim.fn["mkdp#util#install"]()
-                    end
-                }
-            ),
-            -- transparency support in neovim (for adding background image, etc.)
-            use("xiyaowong/transparent.nvim"),
-            -- Recent project explorer
-            use("ahmedkhalf/project.nvim"),
-            -- Show git changes in gutter
-            use("airblade/vim-gitgutter"),
-            -- show inline git blame
-            use("f-person/git-blame.nvim"),
-            -- toggle comments in code
-            use("numToStr/Comment.nvim"),
-            -- auto detect indentation
-            use("nmac427/guess-indent.nvim"),
-            -- git support in vim
-            use("tpope/vim-fugitive"),
-            -- custom status line
-            use {"nvim-lualine/lualine.nvim"},
-            -- line for showing open buffers in tabline
-            use {"akinsho/bufferline.nvim", tag = "*"},
-            -- add color to hex codes
-            use {"norcalli/nvim-colorizer.lua"},
-            -- util for closing buffers easily
-            use {"kazhala/close-buffers.nvim"},
-            use {"mhartington/formatter.nvim"}
+            }
         }
+
+        -- Nvim tree
+        use {
+            "nvim-tree/nvim-tree.lua",
+            requires = {
+                "nvim-tree/nvim-web-devicons" -- optional
+            }
+        }
+
+        use("zbirenbaum/copilot.lua")
+
+        use("theprimeagen/Vim-be-good")
+
+        -- markdown preview in the browser
+        use(
+            {
+                "iamcco/markdown-preview.nvim",
+                run = function()
+                    vim.fn["mkdp#util#install"]()
+                end
+            }
+        )
+        -- transparency support in neovim (for adding background image, etc.)
+        use("xiyaowong/transparent.nvim")
+
+        -- Recent project explorer
+        use("ahmedkhalf/project.nvim")
+
+        -- Show git changes in gutter
+        use("airblade/vim-gitgutter")
+
+        -- show inline git blame
+        use("f-person/git-blame.nvim")
+
+        -- toggle comments in code
+        use("numToStr/Comment.nvim")
+
+        -- auto detect indentation
+        use("nmac427/guess-indent.nvim")
+
+        -- git support in vim
+        use("tpope/vim-fugitive")
+
+        -- custom status line
+        use {"nvim-lualine/lualine.nvim"}
+
+        -- line for showing open buffers in tabline
+        use {"akinsho/bufferline.nvim", tag = "*"}
+
+        -- add color to hex codes
+        use {"norcalli/nvim-colorizer.lua"}
+
+        -- util for closing buffers easily
+        use {"kazhala/close-buffers.nvim"}
+
+        use {"mhartington/formatter.nvim"}
     end
 )
