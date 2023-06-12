@@ -145,4 +145,7 @@ require("lspconfig").angularls.setup {
     root_dir = require("lspconfig/util").root_pattern("project.json", "angular.json")
 }
 
+-- tailwind css setup
+require("lspconfig").tailwindcss.setup {}
+
 lsp.setup()
