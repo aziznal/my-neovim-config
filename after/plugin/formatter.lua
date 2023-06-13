@@ -1,8 +1,14 @@
 local function formatWithPrettier()
+    local bufferName = vim.api.nvim_buf_get_name(0)
+
+    -- surround buffer name with double quotes
+    -- this helps with paths that contain weird shit like parentheses, etc..
+    bufferName = '"' .. bufferName .. '"'
+
     return {
         -- must have prettierd for this to work. install via `npm install -g @fsouza/prettierd`
         exe = "prettierd",
-        args = {vim.api.nvim_buf_get_name(0)},
+        args = {bufferName},
         stdin = true
     }
 end
