@@ -97,8 +97,8 @@ return require("packer").startup(
         -- line for showing open buffers in tabline
         use {"akinsho/bufferline.nvim", tag = "*"}
 
-        -- add color to hex codes
-        use {"norcalli/nvim-colorizer.lua"}
+        -- add highlight matching color to color codes (hex, rgb, etc.)
+        use {"RRethy/vim-hexokinase", run = "make hexokinase"}
 
         -- util for closing buffers easily
         use {"kazhala/close-buffers.nvim"}
