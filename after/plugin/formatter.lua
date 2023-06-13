@@ -61,16 +61,16 @@ require("formatter").setup {
     }
 }
 
--- Format on save
-vim.api.nvim_exec(
-    [[
-        augroup FormatAutogroup
-            autocmd!
-            autocmd BufWritePost * FormatWrite
-        augroup END
-    ]],
-    true
-)
+-- Format on save (disabled cuz it gets on my f@cking nerves with tailwind)
+-- vim.api.nvim_exec(
+--     [[
+--         augroup FormatAutogroup
+--             autocmd!
+--             autocmd BufWritePost * FormatWrite
+--         augroup END
+--     ]],
+--     true
+-- )
 
 -- leader f to format
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Format<CR>", {noremap = true, silent = true})
