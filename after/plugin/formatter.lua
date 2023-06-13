@@ -67,4 +67,4 @@ vim.api.nvim_exec(
 )
 
 -- leader f to format
-vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>FormatWrite<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Format<CR>", {noremap = true, silent = true})
