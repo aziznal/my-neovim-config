@@ -104,5 +104,7 @@ return require("packer").startup(
         use {"kazhala/close-buffers.nvim"}
 
         use {"mhartington/formatter.nvim"}
+
+        use {"mg979/vim-visual-multi", branch = "master"}
     end
 )
