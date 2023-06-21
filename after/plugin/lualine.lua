@@ -1,7 +1,7 @@
 require("lualine").setup(
     {
         options = {
-            theme = require("lualine.themes.material")
+            theme = require("lualine.themes.molokai"),
         },
         icons_enabled = true,
         sections = {
