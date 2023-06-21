@@ -26,7 +26,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
-vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "80"
 
 -- ignore case when searching
 vim.opt.ignorecase = true
@@ -37,4 +37,4 @@ vim.opt.smartcase = true
 vim.cmd("set splitright splitbelow")
 
 -- make vertical split filler just empty (is '|' by default)
-vim.cmd("set fillchars+=vert:\\ ")
+-- vim.cmd("set fillchars+=vert:\\ ")
