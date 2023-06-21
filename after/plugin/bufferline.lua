@@ -1,10 +1,21 @@
 -- termguicolors already set in sets.lua
 
-require("bufferline").setup {
+local bufferline = require("bufferline")
+
+bufferline.setup {
     options = {
+        style_preset = {
+            bufferline.style_preset.no_italic,
+            bufferline.style_preset.no_bold
+        },
         numbers = "ordinal",
         diagnostics = "nvim_lsp",
-        separator_style = "slope",
+        separator_style = "thick",
+        indicator = {
+            style = "icon",
+            icon = "🍉"
+        },
+        modified_icon = "🟡",
         offsets = {
             {
                 filetype = "NvimTree",
