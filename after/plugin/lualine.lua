@@ -2,17 +2,19 @@ require("lualine").setup(
     {
         options = {
             theme = require("lualine.themes.molokai"),
+            section_separators = {left = "", right = ""},
+            component_separators = {left = "", right = ""}
         },
         icons_enabled = true,
         sections = {
             lualine_a = {"mode"},
-            lualine_b = {"branch"},
+            lualine_b = {""},
             lualine_c = {"filename"},
-            lualine_x = {"searchcount", "fileformat", "filetype"},
-            lualine_y = {"progress"},
-            lualine_z = {"location"}
+            lualine_x = {"filetype"},
+            lualine_y = {"branch"},
+            lualine_z = {""}
         },
         tabline = {},
-        globalstatus = false
+        globalstatus = true
     }
 )
