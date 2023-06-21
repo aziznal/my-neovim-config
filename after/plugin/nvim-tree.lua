@@ -18,10 +18,29 @@ vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup {
     sort_by = "case_sensitive",
     view = {
-        width = 60
+        width = 40,
+        preserve_window_proportions = false,
+        float = {
+            enable = true,
+            open_win_config = {
+                relative = "editor",
+                border = "rounded",
+                width = 90,
+                row = 1,
+                col = 1
+            }
+        }
     },
     filters = {
         dotfiles = false
+    },
+    renderer = {
+        highlight_opened_files = "all",
+        highlight_modified = "all"
+    },
+    git = {
+        enable = true,
+        ignore = false
     }
 }
 
