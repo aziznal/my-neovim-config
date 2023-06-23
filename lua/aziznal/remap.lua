@@ -1,8 +1,8 @@
 -- change leader key to space
 vim.g.mapleader = " "
 
--- map explorer command to make it easier to open
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- map explorer command to make it easier to open (disabled because I use nvim-tree)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- moving selection up and down (intelligently)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
