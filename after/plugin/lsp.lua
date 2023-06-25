@@ -2,8 +2,6 @@ local lsp = require("lsp-zero")
 
 -- local on_attach = require("lspconfig").on_attach
 -- local capabilities = require("lspconfig").capabilities
-local lspconfig = require("lspconfig")
-local util = require("lspconfig/util")
 
 lsp.preset("recommended")
 

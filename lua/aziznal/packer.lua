@@ -108,5 +108,10 @@ return require("packer").startup(
         use {"mg979/vim-visual-multi", branch = "master"}
 
         use {"rust-lang/rust.vim", ft = {"rust"}}
+
+        use {
+            "saecki/crates.nvim",
+            dependencies = {"nvim-lua/plenary.nvim"}
+        }
     end
 )
