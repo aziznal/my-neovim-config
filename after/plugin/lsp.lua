@@ -1,5 +1,10 @@
 local lsp = require("lsp-zero")
 
+-- local on_attach = require("lspconfig").on_attach
+-- local capabilities = require("lspconfig").capabilities
+local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
+
 lsp.preset("recommended")
 
 lsp.ensure_installed(
@@ -147,5 +152,25 @@ require("lspconfig").angularls.setup {
 
 -- tailwind css setup
 require("lspconfig").tailwindcss.setup {}
+
+-- rust
+require("lspconfig").rust_analyzer.setup {
+    on_attach = lsp.on_attach,
+    capabilities = lsp.capabilities,
+    -- below cmd field necessary when running rust-analyzer via rustup
+    cmd = {
+        "rustup",
+        "run",
+        "stable",
+        "rust-analyzer"
+    },
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true
+            }
+        }
+    }
+}
 
 lsp.setup()

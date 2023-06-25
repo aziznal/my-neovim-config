@@ -22,6 +22,10 @@ local function formatLuaWithLuafmt()
     }
 end
 
+local function formatRustWithRustFmt()
+    vim.cmd("RustFmt")
+end
+
 require("formatter").setup {
     filetype = {
         -- must have luafmt for this to work. install via `npm install -g lua-fmt`
@@ -57,6 +61,9 @@ require("formatter").setup {
         },
         yaml = {
             formatWithPrettier
+        },
+        rust = {
+            formatRustWithRustFmt
         }
     }
 }

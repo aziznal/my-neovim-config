@@ -106,5 +106,7 @@ return require("packer").startup(
         use {"mhartington/formatter.nvim"}
 
         use {"mg979/vim-visual-multi", branch = "master"}
+
+        use {"rust-lang/rust.vim", ft = {"rust"}}
     end
 )
