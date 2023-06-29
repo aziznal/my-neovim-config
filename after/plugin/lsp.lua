@@ -1,8 +1,5 @@
 local lsp = require("lsp-zero")
 
--- local on_attach = require("lspconfig").on_attach
--- local capabilities = require("lspconfig").capabilities
-
 lsp.preset("recommended")
 
 lsp.ensure_installed(
@@ -130,18 +127,7 @@ lsp.on_attach(
 )
 
 -- lua ls config
-require("lspconfig").lua_ls.setup(
-    {
-        settings = {
-            Lua = {
-                -- disable the undefined vim global issue
-                diagnostics = {
-                    globals = {"vim"}
-                }
-            }
-        }
-    }
-)
+require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 -- angular ls setup
 require("lspconfig").angularls.setup {
