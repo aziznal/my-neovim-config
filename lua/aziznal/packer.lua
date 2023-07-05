@@ -14,13 +14,6 @@ return require("packer").startup(
         -- required for telescope
         use("nvim-lua/plenary.nvim")
 
-        use(
-            {
-                "projekt0n/github-nvim-theme",
-                tag = "v0.0.7"
-            }
-        )
-
         use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
 
         use("windwp/nvim-ts-autotag")
@@ -113,5 +106,15 @@ return require("packer").startup(
             "saecki/crates.nvim",
             dependencies = {"nvim-lua/plenary.nvim"}
         }
+
+        -- Themes
+        use(
+            {
+                "projekt0n/github-nvim-theme",
+                tag = "v0.0.7"
+            }
+        )
+
+        use {"catppuccin/nvim", as = "catppuccin"}
     end
 )
