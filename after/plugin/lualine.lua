@@ -1,7 +1,7 @@
 require("lualine").setup(
     {
         options = {
-            theme = require("lualine.themes.molokai"),
+            theme = "catppuccin",
             section_separators = {left = "", right = ""},
             component_separators = {left = "", right = ""}
         },
