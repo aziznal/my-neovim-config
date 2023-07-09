@@ -4,8 +4,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed(
     {
-        "tsserver",
-        "eslint"
+        "tsserver"
     }
 )
 
