@@ -16,7 +16,8 @@ local function list_buffers()
     builtin.buffers {
         sort_lastused = true,
         previewer = false,
-        initial_mode = "normal"
+        initial_mode = "normal",
+        ignore_current_buffer = true
     }
 end
 
