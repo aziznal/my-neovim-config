@@ -3,7 +3,8 @@ local builtin = require("telescope.builtin")
 local function find_files()
     builtin.find_files {
         previewer = false,
-        hidden = true
+        hidden = true,
+        file_ignore_patterns = {"node_modules", "dist", "build", "target"}
     }
 end
 
@@ -28,7 +29,7 @@ vim.keymap.set(
     "n",
     "<leader>ps",
     function()
-        builtin.grep_string({search = vim.fn.input("Grep > ")})
+        builtin.grep_string()
     end
 )
 
