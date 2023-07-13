@@ -9,7 +9,7 @@ local function find_files()
 end
 
 local function find_git_files()
-    builtin.git_files {previewer = false}
+    builtin.git_files {previewer = false, show_untracked = true}
 end
 
 local function list_buffers()
