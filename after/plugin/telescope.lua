@@ -30,7 +30,16 @@ vim.keymap.set(
     "n",
     "<leader>ps",
     function()
-        builtin.grep_string()
+        builtin.grep_string({search = vim.fn.input("Grep > ")})
+    end
+)
+
+-- live grep
+vim.keymap.set(
+    "n",
+    "<leader>pg",
+    function()
+        builtin.live_grep()
     end
 )
 
