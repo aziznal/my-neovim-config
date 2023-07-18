@@ -116,5 +116,12 @@ return require("packer").startup(
         )
 
         use {"catppuccin/nvim", as = "catppuccin"}
+
+        use(
+            {
+                "kylechui/nvim-surround",
+                tag = "*" -- Use for stability; omit to use `main` branch for the latest features
+            }
+        )
     end
 )
