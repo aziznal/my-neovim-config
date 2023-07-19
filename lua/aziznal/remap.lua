@@ -8,9 +8,20 @@ vim.g.mapleader = " "
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- keep cursor in center while jumping half pages
+-- keep cursor in center:
+--  while jumping half pages
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+--  while finding next/previous matches
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
+
+--  while using *, #
+vim.keymap.set("n", "*", "*zz")
+vim.keymap.set("n", "#", "#zz")
+
+--  while jumping to mark
 
 -- better replace: doesn't overwrite your copy buffer when you use it
 vim.keymap.set("x", "<leader>p", '"_dP')
