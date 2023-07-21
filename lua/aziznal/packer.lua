@@ -123,5 +123,7 @@ return require("packer").startup(
                 tag = "*" -- Use for stability; omit to use `main` branch for the latest features
             }
         )
+
+        use {"folke/todo-comments.nvim"}
     end
 )
