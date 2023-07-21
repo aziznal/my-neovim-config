@@ -1,13 +1,16 @@
+-- FIXME: something needs fixing!
 -- TODO: do something!
 -- HACK: do something!
 -- WARN: do something!
 -- PERF: do something!
 -- NOTE: do something!
 -- TEST: do something!
--- FIXME: something needs fixing!
+
+-- NOTE:
+-- The `TodoTelescope` command should be ran with cwd=. so the complete command is `:TodoTelescope cwd=.`.
 
 require("todo-comments").setup {
-    signs = true, -- show icons in the signs column
+    signs = false, -- show icons in the signs column
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
@@ -20,9 +23,9 @@ require("todo-comments").setup {
         TODO = {icon = " ", color = "info"},
         HACK = {icon = " ", color = "warning"},
         WARN = {icon = " ", color = "warning", alt = {"WARNING", "XXX"}},
-        PERF = {icon = " ", alt = {"OPTIM", "PERFORMANCE", "OPTIMIZE"}},
-        NOTE = {icon = " ", color = "hint", alt = {"INFO"}},
-        TEST = {icon = "⏲ ", color = "test", alt = {"TESTING", "PASSED", "FAILED"}}
+        PERF = {icon = "⏲ ", alt = {"OPTIM", "PERFORMANCE", "OPTIMIZE"}},
+        NOTE = {icon = " ", color = "hint", alt = {"INFO"}},
+        TEST = {icon = "󰙨 ", color = "test", alt = {"TESTING", "PASSED", "FAILED"}}
     },
     gui_style = {
         fg = "NONE", -- The gui style to use for the fg highlight group.
