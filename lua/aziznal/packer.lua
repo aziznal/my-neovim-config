@@ -131,5 +131,14 @@ return require("packer").startup(
         use {"kosayoda/nvim-lightbulb"}
 
         use {"j-hui/fidget.nvim", tag = "legacy"}
+
+        use {
+            "folke/which-key.nvim",
+            config = function()
+                vim.o.timeout = true
+                vim.o.timeoutlen = 1000
+                require("which-key").setup {}
+            end
+        }
     end
 )
