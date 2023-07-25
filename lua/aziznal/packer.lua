@@ -129,5 +129,7 @@ return require("packer").startup(
         use {"chentoast/marks.nvim"}
 
         use {"kosayoda/nvim-lightbulb"}
+
+        use {"j-hui/fidget.nvim", tag = "legacy"}
     end
 )
