@@ -127,5 +127,7 @@ return require("packer").startup(
         use {"folke/todo-comments.nvim"}
 
         use {"chentoast/marks.nvim"}
+
+        use {"kosayoda/nvim-lightbulb"}
     end
 )
