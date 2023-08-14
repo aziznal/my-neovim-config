@@ -16,8 +16,6 @@ return require("packer").startup(
 
         use("nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
 
-        use("windwp/nvim-ts-autotag")
-
         use("mbbill/undotree")
 
         -- LSP Zero
