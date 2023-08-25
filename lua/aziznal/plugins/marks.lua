@@ -1,7 +1,8 @@
 return {
     "chentoast/marks.nvim",
+    event = "BufRead",
     config = function()
-        require"marks".setup {
+        require "marks".setup {
             default_mappings = true,
             -- which builtin marks to show. default {}, example below:
             -- builtin_marks = {".", "<", ">", "^"},
@@ -44,6 +45,5 @@ return {
         -- m}              Move to the next bookmark having the same type as the bookmark under the cursor. Works across buffers.
         -- m{              Move to the previous bookmark having the same type as the bookmark under the cursor. Works across buffers.
         -- dm=             Delete the bookmark under the cursor.
-
     end
 }

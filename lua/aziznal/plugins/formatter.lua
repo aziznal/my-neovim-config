@@ -1,5 +1,6 @@
 return {
     "mhartington/formatter.nvim",
+    event = "BufRead",
     config = function()
         local function formatWithPrettier()
             local bufferName = vim.api.nvim_buf_get_name(0)

@@ -2,6 +2,7 @@
 return {
     "RRethy/vim-hexokinase",
     build = "make hexokinase",
+    event = "BufRead",
     config = function()
         vim.cmd("let g:Hexokinase_highlighters = ['virtual']")
 

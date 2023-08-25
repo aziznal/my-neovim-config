@@ -1,6 +1,7 @@
 -- toggle comments in code
 return {
     "numToStr/Comment.nvim",
+    event = "VeryLazy",
     config = function()
         require("Comment").setup()
 

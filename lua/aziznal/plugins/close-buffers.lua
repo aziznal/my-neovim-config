@@ -1,6 +1,7 @@
 -- util for closing buffers easily
 return {
     "kazhala/close-buffers.nvim",
+    event = "BufRead",
     config = function()
 
         require("close_buffers").setup({})

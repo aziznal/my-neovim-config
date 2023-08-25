@@ -1,5 +1,6 @@
 return {
     "zbirenbaum/copilot.lua",
+    event = "BufRead",
     config = function()
         require("copilot").setup({
             suggestion = {
