@@ -37,10 +37,14 @@ return {
             }
         }
 
-        vim.keymap.set("n", "<leader><C-e>", ":NvimTreeFindFileToggle<CR>", {
-            noremap = true,
-            silent = true
-        })
-
+        vim.keymap.set(
+            "n",
+            "<leader><C-e>",
+            ":NvimTreeFindFileToggle<CR>",
+            {
+                noremap = true,
+                silent = true
+            }
+        )
     end
 }
