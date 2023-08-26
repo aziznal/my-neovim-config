@@ -4,7 +4,6 @@ return {
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-
         local bufferline = require("bufferline")
 
         bufferline.setup {
@@ -13,10 +12,6 @@ return {
                 numbers = "ordinal",
                 diagnostics = "nvim_lsp",
                 separator_style = "thick",
-                indicator = {
-                    style = "icon",
-                    icon = "🍉"
-                },
                 modified_icon = "🟡",
                 offsets = {{
                     filetype = "NvimTree",
