@@ -1,7 +1,7 @@
 return {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.2",
-    dependencies = {'nvim-lua/plenary.nvim'},
+    dependencies = {"nvim-lua/plenary.nvim"},
     config = function()
         local builtin = require("telescope.builtin")
 
@@ -34,16 +34,25 @@ return {
         vim.keymap.set("n", "<C-Tab>", list_buffers, {})
 
         -- fuzzy file finding
-        vim.keymap.set("n", "<leader>ps", function()
-            builtin.grep_string({
-                search = vim.fn.input("Grep > ")
-            })
-        end)
+        vim.keymap.set(
+            "n",
+            "<leader>ps",
+            function()
+                builtin.grep_string(
+                    {
+                        search = vim.fn.input("Grep > ")
+                    }
+                )
+            end
+        )
 
         -- live grep
-        vim.keymap.set("n", "<leader>pg", function()
-            builtin.live_grep()
-        end)
+        vim.keymap.set(
+            "n",
+            "<leader>pg",
+            function()
+                builtin.live_grep()
+            end
+        )
     end
-
 }
