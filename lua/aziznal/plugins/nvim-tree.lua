@@ -22,18 +22,29 @@ return {
         require("nvim-tree").setup {
             sort_by = "case_sensitive",
             view = {
-                width = 40
+                cursorline = true,
+                side = "left",
+                width = {
+                    padding = 2
+                }
             },
             filters = {
                 dotfiles = false
             },
             renderer = {
                 highlight_opened_files = "name",
-                highlight_modified = "name"
+                highlight_modified = "name",
+                full_name = true
             },
             git = {
                 enable = true,
                 ignore = false
+            },
+            update_focused_file = {
+                enable = true
+            },
+            diagnostics = {
+                enable = true
             }
         }
 
