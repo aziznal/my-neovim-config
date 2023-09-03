@@ -17,6 +17,13 @@ return {
             }
         end
 
+        local function formatWithGofmt()
+            return {
+                exe = "gofmt",
+                stdin = true,
+            }
+        end
+
         -- format lua
         local function formatLuaWithLuafmt()
             return {
@@ -44,7 +51,8 @@ return {
                 json = {formatWithPrettier},
                 markdown = {formatWithPrettier},
                 yaml = {formatWithPrettier},
-                rust = {formatRustWithRustFmt}
+                rust = {formatRustWithRustFmt},
+                go = {formatWithGofmt}
             }
         }
 
