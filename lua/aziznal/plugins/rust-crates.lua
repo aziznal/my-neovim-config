@@ -3,10 +3,9 @@ return {
     dependencies = {"nvim-lua/plenary.nvim"},
     ft = "rust",
     config = function()
-        local crates = require("crates");
+        local crates = require("crates")
 
-        crates.setup();
-        crates.show();
-
+        crates.setup()
+        crates.show()
     end
 }

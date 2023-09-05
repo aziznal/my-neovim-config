@@ -1,8 +1,8 @@
 -- termguicolors already set in sets.lua
 return {
-    'akinsho/bufferline.nvim',
+    "akinsho/bufferline.nvim",
     version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons',
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function()
         local bufferline = require("bufferline")
 
@@ -13,12 +13,14 @@ return {
                 diagnostics = "nvim_lsp",
                 separator_style = "thick",
                 modified_icon = "🟡",
-                offsets = {{
-                    filetype = "NvimTree",
-                    text = "File Explorer",
-                    highlight = "Directory",
-                    separator = true -- use a "true" to enable the default, or set your own character
-                }}
+                offsets = {
+                    {
+                        filetype = "NvimTree",
+                        text = "File Explorer",
+                        highlight = "Directory",
+                        separator = true -- use a "true" to enable the default, or set your own character
+                    }
+                }
             }
         }
 
@@ -39,6 +41,5 @@ return {
         map("n", "<leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
         map("n", "<leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
         map("n", "<leader>$", ":BufferLineGoToBuffer -1<CR>", opts)
-
     end
 }
