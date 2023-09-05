@@ -20,7 +20,7 @@ return {
         local function formatWithGofmt()
             return {
                 exe = "gofmt",
-                stdin = true,
+                stdin = true
             }
         end
 
@@ -68,9 +68,14 @@ return {
         -- )
 
         -- leader f to format
-        vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Format<CR>", {
-            noremap = true,
-            silent = true
-        })
+        vim.api.nvim_set_keymap(
+            "n",
+            "<leader>f",
+            "<cmd>Format<CR>",
+            {
+                noremap = true,
+                silent = true
+            }
+        )
     end
 }

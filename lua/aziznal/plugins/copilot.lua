@@ -2,15 +2,16 @@ return {
     "zbirenbaum/copilot.lua",
     event = "BufRead",
     config = function()
-        require("copilot").setup({
-            suggestion = {
-                enabled = true,
-                auto_trigger = true,
-                keymap = {
-                    accept = "<C-l>"
+        require("copilot").setup(
+            {
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    keymap = {
+                        accept = "<C-l>"
+                    }
                 }
             }
-        })
-
+        )
     end
 }
