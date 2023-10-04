@@ -62,7 +62,7 @@ return {
                     initial_mode = "normal",
                     sorting_strategy = "ascending",
                     -- disables netrw and use telescope-file-browser in its place
-                    hijack_netrw = true,
+                    -- hijack_netrw = true,
                     mappings = {
                         ["i"] = {},
                         ["n"] = {}
