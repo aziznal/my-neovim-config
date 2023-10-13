@@ -56,16 +56,21 @@ return {
         )
 
         -- file browser extension
+        local fb_actions = require "telescope".extensions.file_browser.actions
+
         require("telescope").setup {
             extensions = {
                 file_browser = {
                     initial_mode = "normal",
                     sorting_strategy = "ascending",
                     -- disables netrw and use telescope-file-browser in its place
-                    -- hijack_netrw = true,
+                    -- hijack_netrw = true, // disabled since nvim-tree is used
                     mappings = {
                         ["i"] = {},
-                        ["n"] = {}
+                        ["n"] = {
+                            -- backspace for going up one dir
+                            ["-"] = fb_actions.goto_parent_dir
+                        }
                     }
                 }
             }
