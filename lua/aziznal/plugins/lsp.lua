@@ -144,6 +144,15 @@ return {
                     end,
                     opts
                 )
+                -- keymap to restart lsp since some like to crash
+                vim.keymap.set(
+                    "n",
+                    "<leader><leader>r",
+                    function()
+                        vim.cmd("LspRestart")
+                    end,
+                    opts
+                )
             end
         )
 
