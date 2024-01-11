@@ -10,6 +10,7 @@
   "formatter.nvim": { "branch": "master", "commit": "34dcdfa0c75df667743b2a50dd99c84a557376f0" },
   "git-blame.nvim": { "branch": "master", "commit": "39df33dad2cbf4eb9d17264bcda0c12e670ef1c2" },
   "guess-indent.nvim": { "branch": "main", "commit": "b8ae749fce17aa4c267eec80a6984130b94f80b2" },
+  "kmonad-vim": { "branch": "master", "commit": "37978445197ab00edeb5b731e9ca90c2b141723f" },
   "lazy.nvim": { "branch": "main", "commit": "6b6f0a451200bb6abde85978c577c73ea1577758" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "abd2208cf967b911402d32262042b71bdff06c26" },
   "lualine.nvim": { "branch": "master", "commit": "45e27ca739c7be6c49e5496d14fcf45a303c3a63" },
