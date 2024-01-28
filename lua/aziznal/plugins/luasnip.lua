@@ -11,7 +11,9 @@ return {
         local s = ls.snippet
         local t = ls.text_node
         local i = ls.insert_node
-        local r = extras.rep -- See docs @https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md
+        local rep = extras.rep
+
+        -- [[ See docs @https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md ]]
 
         -- [[ TypeScriptReact Snippets ]]
         ls.add_snippets(
@@ -26,7 +28,7 @@ return {
                     }
                 ),
                 s(
-                    "component",
+                    "cmp",
                     fmt(
                         [[
                             export const Foo = () => {
@@ -38,6 +40,45 @@ return {
                             }
                         ]],
                         {},
+                        {
+                            delimiters = "`~"
+                        }
+                    )
+                ),
+
+                s(
+                    "cmpf",
+                    fmt(
+                        [[
+                            import { forwardRef } from "react";
+
+                            type `1~Props = React.HTMLAttributes<HTMLElement> & {};
+
+                            const `2~ = forwardRef<HTMLElement, `3~Props>(
+                              ({ ...props }, ref) => {
+                                return (
+                                  <div
+                                    ref={ref}
+                                    {...props}
+                                  >
+                                    <h1>Hello World!</h1>
+                                  </div>
+                                );
+                              },
+                            );
+
+                            `4~.displayName = "`5~";
+
+                            export default `6~;
+                        ]],
+                        {
+                            i(1, "ComponentName"),
+                            rep(1),
+                            rep(1),
+                            rep(1),
+                            rep(1),
+                            rep(1),
+                        },
                         {
                             delimiters = "`~"
                         }
