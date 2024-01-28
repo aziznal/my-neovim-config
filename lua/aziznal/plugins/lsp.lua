@@ -12,7 +12,8 @@ return {
         {"williamboman/mason-lspconfig.nvim"},
         {"hrsh7th/nvim-cmp"},
         {"hrsh7th/cmp-nvim-lsp"},
-        {"L3MON4D3/LuaSnip", ft = {"lua"}}
+        {"saadparwaiz1/cmp_luasnip"},
+        {"L3MON4D3/LuaSnip"}
     },
     config = function()
         local lsp = require("lsp-zero")
@@ -23,39 +24,30 @@ return {
 
         -- navigating completions
         local cmp = require("cmp")
-        local cmp_select = {
-            behavior = cmp.SelectBehavior.Select
-        }
-        local cmp_mappings =
-            lsp.defaults.cmp_mappings(
-            {
-                ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-                ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                ["<C-y>"] = cmp.mapping.confirm(
-                    {
-                        select = true
-                    }
-                ),
-                ["<C-Space>"] = cmp.mapping.complete()
-            }
-        )
 
-        lsp.setup_nvim_cmp(
-            {
-                mappings = cmp_mappings
-
-                -- completion = {
-                --     autocomplete = {},
-                -- }
-            }
-        )
-
-        -- disables "sign icons"?
-        lsp.set_preferences(
-            {
-                sign_icons = {}
-            }
-        )
+        -- cmp.setup(
+        --     {
+        --         snippet = {
+        --             expand = function(args)
+        --                 require("luasnip").lsp_expand(args.body)
+        --             end
+        --         },
+        --         mapping = {
+        --             ["<C-p>"] = cmp.mapping.select_prev_item(),
+        --             ["<C-n>"] = cmp.mapping.select_next_item(),
+        --             ["<C-y>"] = cmp.mapping.confirm(
+        --                 {
+        --                     select = true
+        --                 }
+        --             ),
+        --             ["<C-Space>"] = cmp.mapping.complete()
+        --         },
+        --         sources = {
+        --             {name = "nvim_lsp"},
+        --             {name = "luasnip"}
+        --         }
+        --     }
+        -- )
 
         lsp.on_attach(
             function(client, bufnr)
