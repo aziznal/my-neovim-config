@@ -90,7 +90,7 @@ return {
                 )
                 vim.keymap.set(
                     "n",
-                    "[d",
+                    "]d",
                     function()
                         vim.diagnostic.goto_next()
                     end,
@@ -98,7 +98,7 @@ return {
                 )
                 vim.keymap.set(
                     "n",
-                    "]d",
+                    "[d",
                     function()
                         vim.diagnostic.goto_prev()
                     end,
