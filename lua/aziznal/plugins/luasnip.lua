@@ -60,7 +60,7 @@ return {
                         [[
                             type `2~Props = {};
 
-                            export default function `1~() {
+                            export default function `1~(props: `3~Props) {
                                 return (
                                     <div>
                                         <h1>Hello World!</h1>
@@ -70,6 +70,7 @@ return {
                         ]],
                         {
                             i(1, "ComponentName"),
+                            rep(1),
                             rep(1)
                         },
                         {
