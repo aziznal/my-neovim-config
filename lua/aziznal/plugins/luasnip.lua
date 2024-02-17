@@ -118,6 +118,32 @@ return {
                             delimiters = "`~"
                         }
                     )
+                ),
+                s(
+                    "form-item",
+                    fmt(
+                        [[
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Email</FormLabel>
+
+                                <FormControl>
+                                  <Input type="email" {...field} />
+                                </FormControl>
+
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        ]],
+                        {},
+                        {
+                            delimiters = "`~"
+                        }
+                    )
                 )
             }
         )
