@@ -24,9 +24,7 @@ return {
             view = {
                 cursorline = true,
                 side = "left",
-                -- width = {
-                --     padding = "2"
-                -- }
+                width = 45
             },
             filters = {
                 dotfiles = false
