@@ -31,7 +31,7 @@ return {
 
         vim.keymap.set("n", "<leader>pf", find_files, {})
         vim.keymap.set("n", "<C-p>", find_git_files, {})
-        vim.keymap.set("n", "<C-Tab>", list_buffers, {})
+        vim.keymap.set("n", "<leader>b", list_buffers, {})
 
         -- fuzzy file finding
         vim.keymap.set(
@@ -53,39 +53,6 @@ return {
             function()
                 builtin.live_grep()
             end
-        )
-
-        -- file browser extension
-        local fb_actions = require "telescope".extensions.file_browser.actions
-
-        require("telescope").setup {
-            extensions = {
-                file_browser = {
-                    initial_mode = "normal",
-                    sorting_strategy = "ascending",
-                    -- disables netrw and use telescope-file-browser in its place
-                    -- hijack_netrw = true, // disabled since nvim-tree is used
-                    mappings = {
-                        ["i"] = {},
-                        ["n"] = {
-                            -- backspace for going up one dir
-                            ["-"] = fb_actions.goto_parent_dir
-                        }
-                    }
-                }
-            }
-        }
-
-        require("telescope").load_extension "file_browser"
-
-        vim.api.nvim_set_keymap("n", "<leader><leader>n", ":Telescope file_browser<CR>", {noremap = true})
-
-        -- open file_browser with the path of the current buffer
-        vim.api.nvim_set_keymap(
-            "n",
-            "<leader><C-e>",
-            ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-            {noremap = true}
         )
     end
 }
