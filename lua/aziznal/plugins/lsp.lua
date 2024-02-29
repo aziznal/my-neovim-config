@@ -25,29 +25,29 @@ return {
         -- navigating completions
         local cmp = require("cmp")
 
-        -- cmp.setup(
-        --     {
-        --         snippet = {
-        --             expand = function(args)
-        --                 require("luasnip").lsp_expand(args.body)
-        --             end
-        --         },
-        --         mapping = {
-        --             ["<C-p>"] = cmp.mapping.select_prev_item(),
-        --             ["<C-n>"] = cmp.mapping.select_next_item(),
-        --             ["<C-y>"] = cmp.mapping.confirm(
-        --                 {
-        --                     select = true
-        --                 }
-        --             ),
-        --             ["<C-Space>"] = cmp.mapping.complete()
-        --         },
-        --         sources = {
-        --             {name = "nvim_lsp"},
-        --             {name = "luasnip"}
-        --         }
-        --     }
-        -- )
+        cmp.setup(
+            {
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end
+                },
+                mapping = {
+                    ["<C-p>"] = cmp.mapping.select_prev_item(),
+                    ["<C-n>"] = cmp.mapping.select_next_item(),
+                    ["<C-y>"] = cmp.mapping.confirm(
+                        {
+                            select = true
+                        }
+                    ),
+                    ["<C-Space>"] = cmp.mapping.complete()
+                },
+                sources = {
+                    {name = "nvim_lsp"},
+                    {name = "luasnip"}
+                }
+            }
+        )
 
         lsp.on_attach(
             function(client, bufnr)
@@ -151,35 +151,35 @@ return {
         -- lua ls config
         require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
-        -- angular ls setup
-        require("lspconfig").angularls.setup {
-            root_dir = require("lspconfig/util").root_pattern("project.json", "angular.json")
-        }
+        -- -- angular ls setup
+        -- require("lspconfig").angularls.setup {
+        --     root_dir = require("lspconfig/util").root_pattern("project.json", "angular.json")
+        -- }
 
         -- tailwind css setup
         require("lspconfig").tailwindcss.setup {}
 
         -- rust
-        require("lspconfig").rust_analyzer.setup {
-            on_attach = lsp.on_attach,
-            capabilities = lsp.capabilities,
-            -- below cmd field necessary when running rust-analyzer via rustup
-            cmd = {"rustup", "run", "stable", "rust-analyzer"},
-            settings = {
-                ["rust-analyzer"] = {
-                    cargo = {
-                        allFeatures = true
-                    },
-                    diagnostics = {
-                        enable = true,
-                        experimental = {
-                            enable = true
-                        }
-                    }
-                }
-            }
-        }
-
+        -- require("lspconfig").rust_analyzer.setup {
+        --     on_attach = lsp.on_attach,
+        --     capabilities = lsp.capabilities,
+        --     -- below cmd field necessary when running rust-analyzer via rustup
+        --     cmd = {"rustup", "run", "stable", "rust-analyzer"},
+        --     settings = {
+        --         ["rust-analyzer"] = {
+        --             cargo = {
+        --                 allFeatures = true
+        --             },
+        --             diagnostics = {
+        --                 enable = true,
+        --                 experimental = {
+        --                     enable = true
+        --                 }
+        --             }
+        --         }
+        --     }
+        -- }
+        --
         lsp.setup()
     end
 }

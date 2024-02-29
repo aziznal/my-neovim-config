@@ -21,11 +21,6 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "#", "#zz")
 
---  while jumping to mark
-
--- better replace: doesn't overwrite your copy buffer when you use it
-vim.keymap.set("x", "<leader>p", '"_dP')
-
 -- ability to copy to system clipboard
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
@@ -50,5 +45,5 @@ vim.keymap.set("n", "<C-Down>", ":resize -3<CR>", {silent = true, noremap = true
 -- Set esc to jj
 vim.keymap.set("i", "jj", "<ESC>")
 
--- set leader leader h to toggle search highlight
+-- toggle search highlight
 vim.keymap.set("n", "<leader><leader>h", ":nohlsearch<CR>", {silent = true, noremap = true})

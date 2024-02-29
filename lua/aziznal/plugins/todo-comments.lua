@@ -6,14 +6,16 @@ return {
         -- HACK: do something!
         -- WARN: do something!
         -- PERF: do something!
-        -- NOTE: do something!
+        --
+        -- NOTE: do something!!
+        --
         -- TEST: do something!
 
         -- NOTE:
         -- The `TodoTelescope` command should be ran with cwd=. so the complete command is `:TodoTelescope cwd=.`.
 
         require("todo-comments").setup {
-            signs = false, -- show icons in the signs column
+            signs = true, -- show icons in the signs column
             sign_priority = 8, -- sign priority
             -- keywords recognized as todo comments
             keywords = {
