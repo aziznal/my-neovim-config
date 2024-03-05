@@ -45,8 +45,7 @@ see [quickfix list docs from neovim](http://neovim.io/doc/user/quickfix.html#qui
 - <alt> with (almost) any key in insert mode interprets that key as in normal mode.
 - `*` to find next for word under selection, `#` for backwards find.
 
-
 ### To do list:
+
 - [ ] Learn to work with terminal inside neovim?
 - [ ] Master folding
-
