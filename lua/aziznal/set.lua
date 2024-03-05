@@ -3,7 +3,7 @@ vim.opt.guicursor = ""
 -- current mode already shown in statusline
 vim.opt.showmode = false
 
--- line-wrapping but smart
+-- line-wrapping but keeps wrapped lines on same indentation level
 vim.opt.breakindent = true
 
 -- enable line numbers and make em relative
@@ -40,6 +40,7 @@ vim.opt.colorcolumn = "100"
 
 -- ignore case when searching
 vim.opt.ignorecase = true
+
 -- automatically switch to case-sensitive if a capital letter is used
 vim.opt.smartcase = true
 
