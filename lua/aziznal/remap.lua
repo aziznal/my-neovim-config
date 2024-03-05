@@ -48,3 +48,5 @@ vim.keymap.set("n", "<leader><leader>h", ":nohlsearch<CR>", {silent = true, nore
 -- exiting insert while in terminal mode is a bit weird by default
 vim.keymap.set("t", "jj", "<C-\\><C-n>")
 
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {desc = "Go to previous [D]iagnostic message"})
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {desc = "Go to next [D]iagnostic message"})

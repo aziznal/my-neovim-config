@@ -38,16 +38,6 @@ vim.opt.updatetime = 50
 vim.opt.timeoutlen = 300
 vim.opt.colorcolumn = "100"
 
--- how certain whitespace characters are displayed
-vim.opt.list = true
-vim.opt.listchars = {
-    tab = "▸ ",
-    trail = "•",
-    extends = "❯",
-    precedes = "❮",
-    nbsp = "␣"
-}
-
 -- ignore case when searching
 vim.opt.ignorecase = true
 -- automatically switch to case-sensitive if a capital letter is used
