@@ -44,3 +44,7 @@ vim.keymap.set("i", "jj", "<ESC>")
 
 -- toggle search highlight
 vim.keymap.set("n", "<leader><leader>h", ":nohlsearch<CR>", {silent = true, noremap = true})
+
+-- exiting insert while in terminal mode is a bit weird by default
+vim.keymap.set("t", "jj", "<C-\\><C-n>")
+
