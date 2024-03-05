@@ -1,5 +1,11 @@
 vim.opt.guicursor = ""
 
+-- current mode already shown in statusline
+vim.opt.showmode = false
+
+-- line-wrapping but smart
+vim.opt.breakindent = true
+
 -- enable line numbers and make em relative
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -16,8 +22,11 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- vim.opt.hlsearch = false
--- vim.opt.incsearch = false
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+-- preview substitutions live
+vim.opt.inccommand = "split"
 
 vim.opt.termguicolors = true
 
@@ -26,7 +35,18 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+vim.opt.timeoutlen = 300
 vim.opt.colorcolumn = "100"
+
+-- how certain whitespace characters are displayed
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = "▸ ",
+    trail = "•",
+    extends = "❯",
+    precedes = "❮",
+    nbsp = "␣"
+}
 
 -- ignore case when searching
 vim.opt.ignorecase = true
