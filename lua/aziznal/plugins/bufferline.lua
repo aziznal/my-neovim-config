@@ -13,6 +13,7 @@ return {
 				diagnostics = "nvim_lsp",
 				separator_style = "thick",
 				modified_icon = "🟡",
+				truncate_names = false,
 				offsets = {
 					{
 						filetype = "NvimTree",
