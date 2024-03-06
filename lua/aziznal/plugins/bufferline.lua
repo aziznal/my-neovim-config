@@ -22,6 +22,15 @@ return {
 					},
 				},
 			},
+			highlights = {
+				buffer_selected = {
+					-- bg = "#a6e3a1",
+					-- fg = "#a6e3a1",
+					fg = "#cba6f7",
+					bold = true,
+					italic = true,
+				},
+			},
 		})
 
 		-- Keybindings
@@ -31,6 +40,8 @@ return {
 			silent = true,
 		}
 
+		map("n", "[b", ":BufferLineCyclePrev <CR>", opts)
+		map("n", "]b", ":BufferLineCycleNext <CR>", opts)
 		map("n", "<leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
 		map("n", "<leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
 		map("n", "<leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
