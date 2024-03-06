@@ -16,6 +16,7 @@ return {
 				javascriptreact = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
 				typescriptreact = { { "prettierd", "prettier" } },
+				markdown = { { "prettierd", "prettier" } },
 			},
 		})
 
