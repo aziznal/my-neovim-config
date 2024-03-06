@@ -34,19 +34,19 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- resize panes more easily
-vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>", {silent = true, noremap = true})
-vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>", {silent = true, noremap = true})
-vim.keymap.set("n", "<C-Up>", ":resize +3<CR>", {silent = true, noremap = true})
-vim.keymap.set("n", "<C-Down>", ":resize -3<CR>", {silent = true, noremap = true})
+vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<C-Up>", ":resize +3<CR>", { silent = true, noremap = true })
+vim.keymap.set("n", "<C-Down>", ":resize -3<CR>", { silent = true, noremap = true })
 
 -- Set esc to jj
 vim.keymap.set("i", "jj", "<ESC>")
 
 -- toggle search highlight
-vim.keymap.set("n", "<leader><leader>h", ":nohlsearch<CR>", {silent = true, noremap = true})
+vim.keymap.set("n", "<leader><leader>h", ":nohlsearch<CR>", { silent = true, noremap = true })
 
 -- exiting insert while in terminal mode is a bit weird by default
 vim.keymap.set("t", "jj", "<C-\\><C-n>")
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {desc = "Go to previous [D]iagnostic message"})
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {desc = "Go to next [D]iagnostic message"})
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })

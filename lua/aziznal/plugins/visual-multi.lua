@@ -1,5 +1,5 @@
 return {
-    "mg979/vim-visual-multi",
-    event = "BufRead",
-    branch = "master"
+	"mg979/vim-visual-multi",
+	event = "BufRead",
+	branch = "master",
 }
