@@ -86,7 +86,7 @@ return {
 					[[
             type `2~Props = {};
 
-            export default function `1~(props: `3~Props) {
+            export function `1~(props: `3~Props) {
               return (
                 <div>
                   <h1>Hello World!</h1>
@@ -130,7 +130,7 @@ return {
 
             `4~.displayName = "`5~";
 
-            export default `6~;
+            export `6~;
           ]],
 					{
 						i(1, "ComponentName"),
