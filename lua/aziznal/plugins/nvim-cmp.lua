@@ -57,16 +57,16 @@ return {
 				"cmp",
 				fmt(
 					[[
-            type `1~Props = {};
+					    type `1~Props = {};
 
-            export const `2~ = (props: `3~Props) => {
-              return (
-                <div>
-                  <h1>Hello World!</h1>
-                </div>
-              )
-            }
-          ]],
+					    export const `2~ = (props: `3~Props) => {
+					      return (
+						<div>
+						  <h1>Hello World!</h1>
+						</div>
+					      )
+					    }
+					  ]],
 					{
 						i(1, "ComponentName"),
 						rep(1),
@@ -84,16 +84,16 @@ return {
 				"cmpdf",
 				fmt(
 					[[
-            type `2~Props = {};
+					    type `2~Props = {};
 
-            export function `1~(props: `3~Props) {
-              return (
-                <div>
-                  <h1>Hello World!</h1>
-                </div>
-              )
-            }
-          ]],
+					    export function `1~(props: `3~Props) {
+					      return (
+						<div>
+						  <h1>Hello World!</h1>
+						</div>
+					      )
+					    }
+					  ]],
 					{
 						i(1, "ComponentName"),
 						rep(1),
@@ -111,27 +111,27 @@ return {
 				"cmpf",
 				fmt(
 					[[
-            import { forwardRef } from "react";
+					    import { forwardRef } from "react";
 
-            type `1~Props = React.HTMLAttributes<HTMLElement> & {};
+					    type `1~Props = React.HTMLAttributes<HTMLElement> & {};
 
-            const `2~ = forwardRef<HTMLElement, `3~Props>(
-              ({ ...props }, ref) => {
-                return (
-                  <div
-                    ref={ref}
-                    {...props}
-                  >
-                    <h1>Hello World!</h1>
-                  </div>
-                );
-              },
-            );
+					    const `2~ = forwardRef<HTMLElement, `3~Props>(
+					      ({ ...props }, ref) => {
+						return (
+						  <div
+						    ref={ref}
+						    {...props}
+						  >
+						    <h1>Hello World!</h1>
+						  </div>
+						);
+					      },
+					    );
 
-            `4~.displayName = "`5~";
+					    `4~.displayName = "`5~";
 
-            export `6~;
-          ]],
+					    export `6~;
+					  ]],
 					{
 						i(1, "ComponentName"),
 						rep(1),
@@ -149,22 +149,67 @@ return {
 				"form-item",
 				fmt(
 					[[
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
+					    <FormField
+					      control={form.control}
+					      name="email"
+					      render={({ field }) => (
+						<FormItem>
+						  <FormLabel>Email</FormLabel>
 
-                  <FormControl>
-                    <Input type="email" {...field} />
-                  </FormControl>
+						  <FormControl>
+						    <Input type="email" {...field} />
+						  </FormControl>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          ]],
+						  <FormMessage />
+						</FormItem>
+					      )}
+					    />
+					  ]],
+					{},
+					{
+						delimiters = "`~",
+					}
+				)
+			),
+
+			s(
+				"shadcn-dialog-imports",
+				fmt(
+					[[
+						import {
+						  Dialog,
+						  DialogContent,
+						  DialogDescription,
+						  DialogHeader,
+						  DialogTitle,
+						  DialogTrigger,
+						} from "@/components/ui/dialog"
+
+					  ]],
+					{},
+					{
+						delimiters = "`~",
+					}
+				)
+			),
+
+			s(
+				"shadcn-dialog",
+				fmt(
+					[[
+					<Dialog>
+					  <DialogTrigger>Open</DialogTrigger>
+					  <DialogContent>
+					    <DialogHeader>
+					      <DialogTitle>Are you absolutely sure?</DialogTitle>
+					      <DialogDescription>
+						This action cannot be undone. This will permanently delete your account
+						and remove your data from our servers.
+					      </DialogDescription>
+					    </DialogHeader>
+					  </DialogContent>
+					</Dialog>
+				        ]],
 					{},
 					{
 						delimiters = "`~",
