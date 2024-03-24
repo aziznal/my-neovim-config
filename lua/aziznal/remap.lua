@@ -50,3 +50,11 @@ vim.keymap.set("t", "jj", "<C-\\><C-n>")
 
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+
+--[[ my custom macros ]]
+
+-- 1. escape html
+vim.keymap.set("n", "<leader>cme", "diwi{`<Esc>pa`}<Esc>", { desc = "Escape html" })
+
+-- 2. convert className to use cn util
+vim.keymap.set("n", "<leader>cmcn", 'da"i{cn(<Esc>pa)}<Esc>', { desc = 'Convert className="" to className={cn(...)}' })
