@@ -216,6 +216,43 @@ return {
 					}
 				)
 			),
+
+			s(
+				"shadcn-dropdownmenu-imports",
+				fmt(
+					[[
+						import {
+							DropdownMenu,
+							DropdownMenuContent,
+							DropdownMenuItem,
+							DropdownMenuTrigger,
+						} from "@/components/ui/dropdown-menu";
+					]],
+					{},
+					{
+						delimiters = "`~",
+					}
+				)
+			),
+
+			s(
+				"shadcn-dropdownmenu",
+				fmt(
+					[[
+					<DropdownMenu>
+					  <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+					  <DropdownMenuContent>
+					    <DropdownMenuItem>Item 1</DropdownMenuItem>
+					    <DropdownMenuItem>Item 2</DropdownMenuItem>
+					  </DropdownMenuContent>
+					</DropdownMenu>
+				        ]],
+					{},
+					{
+						delimiters = "`~",
+					}
+				)
+			),
 		})
 
 		cmp.setup({
