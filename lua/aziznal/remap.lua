@@ -51,6 +51,16 @@ vim.keymap.set("t", "jj", "<C-\\><C-n>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
+-- [[ quickfix list shortcuts ]]
+
+-- 1. open / close
+vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Open quickfix list" })
+
+-- 2. next and prev items
+vim.keymap.set("n", "<leader>;", ":cnext<CR>", { desc = "go to next quickfix item" })
+vim.keymap.set("n", "<leader>,", ":cprevious<CR>", { desc = "go to previous quickfix item" })
+
 --[[ my custom macros ]]
 
 -- 1. escape html
