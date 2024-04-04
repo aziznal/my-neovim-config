@@ -152,7 +152,8 @@ return {
 				model = "gpt-4",
 				frequency_penalty = 0,
 				presence_penalty = 0,
-				max_tokens = 7000,
+				-- actual max tokens is 8192. below count is just for response and the bandwidth for input and response is SHARED!
+				max_tokens = 4000,
 				temperature = 0,
 				top_p = 1,
 				n = 1,
