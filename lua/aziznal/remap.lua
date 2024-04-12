@@ -67,4 +67,4 @@ vim.keymap.set("n", "<leader>,", ":cprevious<CR>", { desc = "go to previous quic
 vim.keymap.set("n", "<leader>cme", "diwi{`<Esc>pa`}<Esc>", { desc = "Escape html" })
 
 -- 2. convert className to use cn util
-vim.keymap.set("n", "<leader>cmcn", 'da"a{cn(<Esc>pa)}<Esc>', { desc = 'Convert className="" to className={cn(...)}' })
+vim.keymap.set("n", "<leader>cmcn", 'da"i{cn(<Esc>pa)}<Esc>', { desc = 'Convert className="" to className={cn(...)}' })
