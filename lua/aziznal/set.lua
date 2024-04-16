@@ -46,3 +46,6 @@ vim.opt.smartcase = true
 
 -- make new splits go below and to the right of the current pane
 vim.cmd("set splitright splitbelow")
+
+-- folds
+vim.cmd("set foldcolumn=1")
