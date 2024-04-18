@@ -32,6 +32,7 @@ return {
 	config = function()
 		-- See `:help cmp`
 		local cmp = require("cmp")
+		local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
 		luasnip.setup()
 
@@ -298,6 +299,15 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "path" },
+				{ name = "lspkind" },
+			},
+			formatting = {
+				format = lspkind.cmp_format({
+					mode = "symbol_text",
+					maxwidth = 50,
+					ellipsis_char = "...", -- shown when maxwidth is exceeded
+					show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+				}),
 			},
 		})
 	end,
