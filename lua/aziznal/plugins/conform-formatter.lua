@@ -13,10 +13,10 @@ return {
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
 				javascript = { { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
-				javascriptreact = { { "prettierd", "prettier" } },
+				css = { { "prettier" } },
+				javascriptreact = { { "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
-				typescriptreact = { { "prettierd", "prettier" } },
+				typescriptreact = { { "prettier" } },
 				markdown = { { "prettierd", "prettier" } },
 				json = { { "prettierd", "prettier" } },
 				jsonc = { { "prettierd", "prettier" } },
