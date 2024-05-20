@@ -66,12 +66,12 @@ return {
 			popup_layout = {
 				default = "center",
 				center = {
-					width = "80%",
-					height = "80%",
+					width = "70%",
+					height = "70%",
 				},
 				right = {
-					width = "30%",
-					width_settings_open = "50%",
+					width = "60%",
+					width_settings_open = "70%",
 				},
 			},
 			popup_window = {
