@@ -129,5 +129,9 @@ return {
 				"--offset-encoding=utf-16",
 			},
 		})
+
+		require("java").setup()
+
+		require("lspconfig").jdtls.setup({})
 	end,
 }
