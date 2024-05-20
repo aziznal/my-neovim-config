@@ -149,7 +149,7 @@ return {
 				},
 			},
 			openai_params = {
-				model = "gpt-4",
+				model = "gpt-4o",
 				frequency_penalty = 0,
 				presence_penalty = 0,
 				-- actual max tokens is 8192. below count is just for response and the bandwidth for input and response is SHARED!
@@ -159,7 +159,7 @@ return {
 				n = 1,
 			},
 			openai_edit_params = {
-				model = "gpt-4",
+				model = "gpt-4o",
 				frequency_penalty = 0,
 				presence_penalty = 0,
 				temperature = 0,
