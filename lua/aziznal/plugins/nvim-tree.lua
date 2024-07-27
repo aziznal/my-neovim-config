@@ -29,8 +29,14 @@ return {
 					min = 45,
 				},
 			},
+			filesystem_watchers = {
+				ignore_dirs = {
+					"node_modules",
+				},
+			},
 			filters = {
 				dotfiles = false,
+				git_ignored = false,
 			},
 			renderer = {
 				highlight_opened_files = "name",
@@ -39,7 +45,6 @@ return {
 			},
 			git = {
 				enable = true,
-				ignore = false,
 			},
 			update_focused_file = {
 				enable = true,
