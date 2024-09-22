@@ -34,6 +34,7 @@ return {
 			}, -- table: additional groups that should be cleared
 			exclude_groups = {
 				"CursorLine",
+				"NormalFloat"
 			}, -- table: groups you don't want to clear
 		})
 	end,
