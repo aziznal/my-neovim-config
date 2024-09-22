@@ -49,3 +49,10 @@ vim.cmd("set splitright splitbelow")
 
 -- folds
 vim.cmd("set foldcolumn=1")
+
+-- Set up a border for the hover window (K)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+	border = "rounded", -- You can use "single", "double", "rounded", "solid", "shadow", or a list of characters,
+	offset_x = 0,
+	offset_y = 0,
+})
