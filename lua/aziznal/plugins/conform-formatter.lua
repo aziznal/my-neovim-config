@@ -14,12 +14,14 @@ return {
 				-- is found.
 				javascript = { { "prettier" } },
 				css = { { "prettier" } },
+				html = { { "prettier" } },
 				javascriptreact = { { "prettier" } },
 				typescript = { { "prettier" } },
 				typescriptreact = { { "prettier" } },
 				markdown = { { "prettier" } },
 				json = { { "prettier" } },
 				jsonc = { { "prettier" } },
+				go = { { "gofmt" } },
 			},
 		})
 
