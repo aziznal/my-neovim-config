@@ -22,6 +22,8 @@ return {
 				json = { { "prettier" } },
 				jsonc = { { "prettier" } },
 				go = { { "gofmt" } },
+
+				rust = { { "rustfmt" } },
 			},
 		})
 
