@@ -6,24 +6,21 @@ return {
 			notify_on_error = false,
 
 			formatters_by_ft = {
-				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use a sub-list to tell conform to run *until* a formatter
-				-- is found.
-				javascript = { { "prettier" } },
-				css = { { "prettier" } },
-				html = { { "prettier" } },
-				javascriptreact = { { "prettier" } },
-				typescript = { { "prettier" } },
-				typescriptreact = { { "prettier" } },
-				markdown = { { "prettier" } },
-				json = { { "prettier" } },
-				jsonc = { { "prettier" } },
-				go = { { "gofmt" } },
+				lua = { "stylua", stop_after_first = true },
+				css = { "prettierd", stop_after_first = true },
+				html = { "prettierd", stop_after_first = true },
 
-				rust = { { "rustfmt" } },
+				javascript = { "prettierd", stop_after_first = true, timeout_ms = 2000 },
+				javascriptreact = { "prettierd", stop_after_first = true, timeout_ms = 2000 },
+				typescript = { "prettierd", stop_after_first = true, timeout_ms = 2000 },
+				typescriptreact = { "prettierd", stop_after_first = true, timeout_ms = 2000 },
+
+				markdown = { "prettierd", stop_after_first = true },
+				json = { "prettierd", stop_after_first = true },
+				jsonc = { "prettierd", stop_after_first = true },
+				go = { "gofmt", stop_after_first = true },
+
+				rust = { "rustfmt", stop_after_first = true },
 			},
 		})
 
