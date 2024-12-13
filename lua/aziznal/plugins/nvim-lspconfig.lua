@@ -103,6 +103,14 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format lua code
+			"lua-language-server",
+			"eslint-lsp",
+			"html-lsp",
+			"emmet-ls",
+			"tailwindcss-language-server",
+			"css-lsp",
+			"prettier",
+			-- NOTE: typescript-lsp is installed as a plugin (typescript-tools)
 		})
 
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
