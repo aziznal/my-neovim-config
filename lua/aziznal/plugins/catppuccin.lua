@@ -1,7 +1,7 @@
 return {
 	"catppuccin/nvim",
 	as = "catppuccin",
-	-- high proirity to make sure theme is loaded first
+	-- high priority to make sure theme is loaded first
 	priority = 1000,
 	config = function()
 		function ApplyColors(color)
