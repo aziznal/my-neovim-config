@@ -96,6 +96,21 @@ return {
 					},
 				},
 			},
+
+			tailwindcss = {
+				settings = {
+					tailwindCSS = {
+						classAttributes = {
+							"class",
+							"className",
+							"class:list",
+							"classList",
+							"ngClass",
+							"containerClassName",
+						},
+					},
+				},
+			},
 		}
 
 		require("mason").setup()
