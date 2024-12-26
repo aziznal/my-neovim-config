@@ -19,5 +19,7 @@ return {
 				})
 			end)
 		end, { desc = "Uses CopyJsonPath then runs toggles a ripgrep search result in telescope using it" })
+
+		vim.keymap.set("n", "<leader>ft", ":FindTranslation<CR>", { silent = true, noremap = true })
 	end,
 }
