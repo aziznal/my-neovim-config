@@ -11,7 +11,7 @@ return {
 		end
 
 		require("catppuccin").setup({
-			flavour = "mocha", -- latte, frappe, macchiato, mocha
+			flavour = "macchiato", -- latte, frappe, macchiato, mocha
 			background = {
 				-- :h background
 				light = "latte",
@@ -51,12 +51,12 @@ return {
 				nvimtree = true,
 				telescope = true,
 				mason = true,
-				bufferline = true,
+				bufferline = false,
 				notify = false,
 				mini = false,
 			},
 		})
 
-		ApplyColors("catppuccin")
+		-- ApplyColors("catppuccin")
 	end,
 }
