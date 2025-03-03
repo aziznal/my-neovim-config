@@ -481,11 +481,9 @@ export const useBearStore = create<BearStore>()(
 		"log-with-new-lines",
 		fmt(
 			[[
-
 console.log("\n\n\n")
 console.log()
 console.log("\n\n\n")
-
 ]],
 			{},
 			{
@@ -500,3 +498,6 @@ luasnip.add_snippets("typescriptreact", nextjs_snippets)
 luasnip.add_snippets("typescriptreact", shadcn_snippets)
 luasnip.add_snippets("typescriptreact", dnd_snippets)
 luasnip.add_snippets("typescriptreact", misc_snippets)
+
+luasnip.add_snippets("typescript", shadcn_snippets)
+luasnip.add_snippets("typescript", misc_snippets)
