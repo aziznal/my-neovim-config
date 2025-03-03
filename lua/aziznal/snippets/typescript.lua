@@ -476,6 +476,23 @@ export const useBearStore = create<BearStore>()(
 			}
 		)
 	),
+
+	s(
+		"log-with-new-lines",
+		fmt(
+			[[
+
+console.log("\n\n\n")
+console.log()
+console.log("\n\n\n")
+
+]],
+			{},
+			{
+				delimiters = "`~",
+			}
+		)
+	),
 }
 
 luasnip.add_snippets("typescriptreact", react_snippets)
