@@ -15,11 +15,30 @@ return {
 		},
 	},
 	config = function()
+		local actions = require("telescope.actions")
+
+		local function smart_quickfix_list(bufnr)
+			actions.smart_send_to_qflist(bufnr)
+			actions.open_qflist(bufnr)
+		end
+
 		require("telescope").setup({
 			extensions = {
 				fzf = {},
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
+				},
+			},
+
+			defaults = {
+				mappings = {
+					n = {
+						["<C-q>"] = smart_quickfix_list,
+					},
+
+					i = {
+						["<C-q>"] = smart_quickfix_list,
+					},
 				},
 			},
 		})
@@ -54,12 +73,6 @@ return {
 			})
 		end
 
-		local function grep_string()
-			builtin.grep_string({
-				search = vim.fn.input("Grep > "),
-			})
-		end
-
 		local function search_in_file()
 			builtin.live_grep({
 				grep_open_files = true,
@@ -80,7 +93,6 @@ return {
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = "Search oldfiles" })
 
 		-- finding text in files
-		vim.keymap.set("n", "<leader>sw", grep_string, { desc = "Grep string" })
 		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Live grep" })
 		vim.keymap.set("n", "<leader>s/", search_in_file, { desc = "[S]earch [/] in Open Files" })
 		vim.keymap.set("n", "<leader>sn", search_in_neovim_config, { desc = "Search in neovim config" })
