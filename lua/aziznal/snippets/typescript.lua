@@ -73,7 +73,7 @@ export function `1~(props: `3~Props) {
 		fmt(
 			[[
 
-const `1~Component: React.FC<{ name: string }> = (props) => {
+const `1~: React.FC<{ name: string }> = (props) => {
   return <div>
     Hello, {props.name}
   </div>
