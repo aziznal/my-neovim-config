@@ -89,6 +89,27 @@ const `1~: React.FC<{ name: string }> = (props) => {
 	),
 
 	s(
+		"component-fc-cn",
+		fmt(
+			[[
+import { cn } from '@/lib/utils';
+
+const `1~: React.FC<{ className?: string }> = (props) => {
+  return <div className={cn(props.className)}>
+    Hello World!
+  </div>
+}
+					  ]],
+			{
+				i(1, "Example"),
+			},
+			{
+				delimiters = "`~",
+			}
+		)
+	),
+
+	s(
 		"component-forward-ref",
 		fmt(
 			[[
