@@ -125,7 +125,6 @@ return {
 			"emmet-ls",
 			"tailwindcss-language-server",
 			"css-lsp",
-			"prettier",
 			-- NOTE: typescript-lsp is installed as a plugin (typescript-tools)
 		})
 
