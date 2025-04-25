@@ -101,7 +101,7 @@ const `1~: React.FC<{ className?: string }> = (props) => {
 }
 					  ]],
 			{
-				i(1, "Example"),
+				i(1),
 			},
 			{
 				delimiters = "`~",
