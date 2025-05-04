@@ -1,56 +1,88 @@
 -- [[
---		Runs the command `npx tsc --noEmit --pretty false` and parses its outputs into quickfix list
+--		Runs the command `npx tsc --noEmit --pretty true` and parses the summary lines
+--    at the end into the quickfix list (one entry per file) using Lua patterns.
+--    Handles both single-file and multi-file summary formats.
 --
---		Shamefully vibe-coded with the help of gemini-2.5pro (in like 7 iterations)
+--		Shamefully vibe-coded with the help of gemini-2.5pro (in like 14 iterations)
 -- ]]
 
 ---@diagnostic disable: missing-fields
 ---@diagnostic disable: unused-local
 
 ---@class TscQuickFixItem : vim.quickfix.entry
--- No specific additions needed beyond standard vim.QuickFixItem for this use case
+-- Represents a single entry in the quickfix list, pointing to a file from the TSC summary.
 
 ---@class TscQuickFixModule
 ---@field run_tsc_check fun():nil
 local M = {}
 
---- Parses lines formatted by awk (filename|lnum|col|text) into quickfix items.
----@param awk_output_lines string[] Table of strings, each pipe-delimited.
----@return TscQuickFixItem[] qf_list A table of quickfix item tables.
-local function build_qf_list_from_awk(awk_output_lines)
+--- Strips ANSI escape codes from a string.
+---@param str string The input string potentially containing ANSI codes.
+---@return string str_clean The string with ANSI codes removed.
+local function strip_ansi(str)
+  -- Pattern matches ANSI escape sequences: ESC [ ... m
+  local clean_str = string.gsub(str, "\x1b%[[%d;]*[a-zA-Z]", "")
+  return clean_str
+end
+
+--- Parses the summary lines from `tsc --pretty true` output using Lua patterns.
+--- Handles single-file ("Found N error(s) in file:line") and
+--- multi-file detail lines ("     N  file:line").
+---@param tsc_output_lines string[] Full output from the tsc command.
+---@return TscQuickFixItem[] qf_list A table of quickfix item tables (one per file).
+local function parse_tsc_summary(tsc_output_lines)
   ---@type TscQuickFixItem[]
   local qf_list = {}
-  for _, line in ipairs(awk_output_lines) do
-    local parts = vim.split(line, "|", { trimempty = true })
-    if #parts == 4 then
-      local filename = parts[1]
-      local lnum = tonumber(parts[2])
-      local col = tonumber(parts[3])
-      local text = parts[4]
+  ---@type table<string, boolean> Keep track of files already added
+  local added_files = {}
 
-      -- Basic validation
-      if
-        filename
-        and lnum
-        and col
-        and text
-        and (vim.fn.filereadable(filename) == 1 or vim.fn.isdirectory(filename) == 0)
-      then
-        table.insert(qf_list, {
-          filename = filename,
-          lnum = lnum,
-          col = col,
-          text = text,
-          type = "E", -- E for Error
-        })
+  -- Pattern for single-file summary: "Found N error(s) in file:line"
+  local single_file_pattern = "^Found %d+ errors? in (.*):(%d+)$"
+  -- Pattern for multi-file summary detail lines: "     N  file:line"
+  -- %s* matches leading whitespace
+  -- %d+ matches the error count
+  -- %s+ matches whitespace separator
+  -- (.*) captures the filename
+  -- (%d+) captures the line number
+  local multi_file_detail_pattern = "^%s*%d+%s+(.*):(%d+)$"
+
+  for _, original_line in ipairs(tsc_output_lines) do
+    local line = strip_ansi(original_line)
+    local filename, lnum_str = nil, nil -- Initialize captures
+
+    -- Try matching single-file pattern first
+    filename, lnum_str = string.match(line, single_file_pattern)
+
+    -- If single-file didn't match, try multi-file detail pattern
+    if not filename then
+      filename, lnum_str = string.match(line, multi_file_detail_pattern)
+    end
+
+    -- Check if either match was successful
+    if filename and lnum_str then
+      local lnum = tonumber(lnum_str)
+      filename = vim.fn.trim(filename) -- Trim whitespace
+
+      -- Add only one entry per file
+      if lnum and filename ~= "" and not added_files[filename] then
+        -- Validate file path relative to CWD
+        if vim.fn.filereadable(filename) == 1 or vim.fn.isdirectory(filename) == 0 then
+          table.insert(qf_list, {
+            filename = filename,
+            lnum = lnum,
+            text = line, -- Use the cleaned summary line as text
+            type = "E",
+          })
+          added_files[filename] = true
+        end
       end
     end
   end
   return qf_list
 end
 
---- Runs 'npx tsc --noEmit --pretty false', parses output with awk,
---- and populates the quickfix list.
+--- Runs 'npx tsc --noEmit --pretty true', parses the summary output,
+--- and populates the quickfix list with one entry per file.
 ---@nodiscard Does not return a value, operates via side effects (job, quickfix).
 function M.run_tsc_check()
   ---@type string[]
@@ -87,54 +119,45 @@ function M.run_tsc_check()
     ---@param code number The exit code of the process.
     ---@param _event string The event name ('exit').
     on_exit = function(_job_id, code, _event)
-      local awk_script = [[
-      BEGIN { OFS="|" }
-      {
-          if (match($0, /^(.*)\(([0-9]+),([0-9]+)\): (error TS[0-9]+: .*)$/, arr)) {
-              gsub(/^[ \t]+|[ \t]+$/, "", arr[1]);
-              gsub(/^[ \t]+|[ \t]+$/, "", arr[4]);
-              print arr[1], arr[2], arr[3], arr[4];
-          }
-      }
-      ]]
-
-      ---@type string[] awk command results
-      local awk_results = vim.fn.systemlist({ "awk", awk_script }, table.concat(output_lines, "\n"))
-
       ---@type TscQuickFixItem[]
-      local qf_list = build_qf_list_from_awk(awk_results)
+      local qf_list = parse_tsc_summary(output_lines)
 
       if #qf_list > 0 then
-        vim.fn.setqflist({}, " ", { title = "TSC Errors (awk)", items = qf_list })
+        vim.fn.setqflist({}, " ", { title = "TSC File Errors (Summary)", items = qf_list })
         vim.cmd("copen")
-        vim.notify("TSC check finished. Found " .. #qf_list .. " errors.", vim.log.levels.INFO)
+        vim.notify("TSC check finished. Found errors in " .. #qf_list .. " file(s).", vim.log.levels.INFO)
       elseif code == 0 then
-        vim.fn.setqflist({}, "r", { title = "TSC Errors (awk)", items = {} })
+        vim.fn.setqflist({}, "r", { title = "TSC File Errors (Summary)", items = {} })
         vim.cmd("cclose")
         vim.notify("TSC check finished. No errors found.", vim.log.levels.INFO)
       elseif code ~= 0 and #qf_list == 0 then
-        vim.fn.setqflist({}, "r", { title = "TSC Errors (awk)", items = {} })
+        vim.fn.setqflist({}, "r", { title = "TSC File Errors (Summary)", items = {} })
         vim.cmd("cclose")
-        vim.notify("TSC check failed or produced no parsable errors. Exit code: " .. code, vim.log.levels.WARN)
+        vim.notify("TSC check failed or produced no parsable summary lines. Exit code: " .. code, vim.log.levels.WARN)
+        vim.notify("--- Raw TSC Output Start (Failure Case) ---", vim.log.levels.INFO)
+        for i, line in ipairs(output_lines) do
+          vim.notify(string.format("[%d]: %s", i, line), vim.log.levels.INFO)
+        end
+        vim.notify("--- Raw TSC Output End (Failure Case) ---", vim.log.levels.INFO)
       end
     end,
   }
 
   ---@type number|nil job_id The started job's ID or nil on failure.
-  local job_id = vim.fn.jobstart({ "npx", "tsc", "--noEmit", "--pretty", "false" }, job_options)
+  local job_id = vim.fn.jobstart({ "npx", "tsc", "--noEmit", "--incremental", "--pretty", "true" }, job_options)
 
   if not job_id or job_id == 0 or job_id == -1 then
     vim.notify("Failed to start npx tsc job.", vim.log.levels.ERROR)
     return
   end
 
-  vim.notify("Running npx tsc --noEmit...", vim.log.levels.INFO)
+  vim.notify("Running npx tsc --noEmit --pretty true...", vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_user_command("TscCheck", M.run_tsc_check, {
   nargs = 0,
-  desc = "Run npx tsc --noEmit (using awk) and populate quickfix list",
-  force = true, -- Overwrite previous command if it exists
+  desc = "Run npx tsc --pretty true, list files with errors in quickfix",
+  force = true,
 })
 
 return M
