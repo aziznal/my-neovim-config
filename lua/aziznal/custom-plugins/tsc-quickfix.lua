@@ -1,9 +1,9 @@
 -- [[
 --		Runs the command `npx tsc --noEmit --pretty true` and parses the summary lines
 --    at the end into the quickfix list (one entry per file) using Lua patterns.
---    Handles both single-file and multi-file summary formats.
+--    Handles single-file, multi-file, and multi-error-same-file summary formats.
 --
---		Shamefully vibe-coded with the help of gemini-2.5pro (in like 14 iterations)
+--		Shamefully vibe-coded with the help of gemini-2.5pro (in like 15 iterations)
 -- ]]
 
 ---@diagnostic disable: missing-fields
@@ -26,8 +26,10 @@ local function strip_ansi(str)
 end
 
 --- Parses the summary lines from `tsc --pretty true` output using Lua patterns.
---- Handles single-file ("Found N error(s) in file:line") and
---- multi-file detail lines ("     N  file:line").
+--- Handles:
+---   1. "Found 1 error in file:line"
+---   2. "Found N errors in the same file, starting at: file:line"
+---   3. Multi-file detail lines ("     N  file:line")
 ---@param tsc_output_lines string[] Full output from the tsc command.
 ---@return TscQuickFixItem[] qf_list A table of quickfix item tables (one per file).
 local function parse_tsc_summary(tsc_output_lines)
@@ -36,29 +38,29 @@ local function parse_tsc_summary(tsc_output_lines)
   ---@type table<string, boolean> Keep track of files already added
   local added_files = {}
 
-  -- Pattern for single-file summary: "Found N error(s) in file:line"
-  local single_file_pattern = "^Found %d+ errors? in (.*):(%d+)$"
-  -- Pattern for multi-file summary detail lines: "     N  file:line"
-  -- %s* matches leading whitespace
-  -- %d+ matches the error count
-  -- %s+ matches whitespace separator
-  -- (.*) captures the filename
-  -- (%d+) captures the line number
+  -- Pattern 1: Single error, single file
+  local single_error_pattern = "^Found 1 error in (.*):(%d+)$"
+  -- Pattern 2: Multiple errors, single file
+  local multi_error_same_file_pattern = "^Found %d+ errors in the same file, starting at: (.*):(%d+)$"
+  -- Pattern 3: Multi-file summary detail lines
   local multi_file_detail_pattern = "^%s*%d+%s+(.*):(%d+)$"
 
   for _, original_line in ipairs(tsc_output_lines) do
     local line = strip_ansi(original_line)
     local filename, lnum_str = nil, nil -- Initialize captures
 
-    -- Try matching single-file pattern first
-    filename, lnum_str = string.match(line, single_file_pattern)
+    -- Try matching patterns in order
+    filename, lnum_str = string.match(line, single_error_pattern)
 
-    -- If single-file didn't match, try multi-file detail pattern
+    if not filename then
+      filename, lnum_str = string.match(line, multi_error_same_file_pattern)
+    end
+
     if not filename then
       filename, lnum_str = string.match(line, multi_file_detail_pattern)
     end
 
-    -- Check if either match was successful
+    -- Check if any match was successful
     if filename and lnum_str then
       local lnum = tonumber(lnum_str)
       filename = vim.fn.trim(filename) -- Trim whitespace
