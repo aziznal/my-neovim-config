@@ -94,7 +94,7 @@ const `1~: React.FC<{ name: string }> = (props) => {
 			[[
 import { cn } from '@/lib/utils';
 
-const `1~: React.FC<{ className?: string }> = (props) => {
+export const `1~: React.FC<{ className?: string }> = (props) => {
   return <div className={cn(props.className)}>
     Hello World!
   </div>
