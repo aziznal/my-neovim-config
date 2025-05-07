@@ -13,10 +13,10 @@ local rep = extras.rep
 -- [[ See docs @https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md ]]
 
 local react_snippets = {
-	s(
-		"component",
-		fmt(
-			[[
+  s(
+    "component",
+    fmt(
+      [[
 type `1~Props = {};
 
 export const `2~ = (props: `3~Props) => {
@@ -27,23 +27,23 @@ export const `2~ = (props: `3~Props) => {
 	)
 }
 			]],
-			{
-				i(1, "ComponentName"),
-				rep(1),
-				rep(1),
-			},
-			{
-				delimiters = "`~",
-			},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
-	s(
-		"component-function",
-		fmt(
-			[[
+      {
+        i(1),
+        rep(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
+  s(
+    "component-function",
+    fmt(
+      [[
 type `2~Props = {};
 
 export function `1~(props: `3~Props) {
@@ -54,24 +54,24 @@ export function `1~(props: `3~Props) {
 	)
 }
 					  ]],
-			{
-				i(1, "ComponentName"),
-				rep(1),
-				rep(1),
-			},
-			{
-				delimiters = "`~",
-			},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {
+        i(1),
+        rep(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"component-fc",
-		fmt(
-			[[
+  s(
+    "component-fc",
+    fmt(
+      [[
 
 const `1~: React.FC<{ name: string }> = (props) => {
   return <div>
@@ -79,19 +79,19 @@ const `1~: React.FC<{ name: string }> = (props) => {
   </div>
 }
 					  ]],
-			{
-				i(1, "Example"),
-			},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {
+        i(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"component-fc-cn",
-		fmt(
-			[[
+  s(
+    "component-fc-cn",
+    fmt(
+      [[
 import { cn } from '@/lib/utils';
 
 export const `1~: React.FC<{ className?: string }> = (props) => {
@@ -100,19 +100,19 @@ export const `1~: React.FC<{ className?: string }> = (props) => {
   </div>
 }
 					  ]],
-			{
-				i(1),
-			},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {
+        i(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"component-forward-ref",
-		fmt(
-			[[
+  s(
+    "component-forward-ref",
+    fmt(
+      [[
 import { forwardRef } from "react";
 
 type `1~Props = React.HTMLAttributes<HTMLElement> & {};
@@ -134,24 +134,24 @@ const `2~ = forwardRef<HTMLElement, `3~Props>(
 
 export `6~;
 ]],
-			{
-				i(1, "ComponentName"),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-			},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {
+        i(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"react-context",
-		fmt(
-			[[
+  s(
+    "react-context",
+    fmt(
+      [[
 import { PropsWithChildren, createContext, useContext } from "react";
 
 type `1~ContextType = {};
@@ -170,63 +170,63 @@ export const `7~ContextProvider = ({ children }: PropsWithChildren) => {
   );
 };
 ]],
-			{
-				i(1, "Example"),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-				rep(1),
-			},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {
+        i(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 local nextjs_snippets = {
 
-	s(
-		"next-page",
-		fmt(
-			[[
+  s(
+    "next-page",
+    fmt(
+      [[
 export default function Page() {
   return <div>Page</div>;
 }
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"next-layout",
-		fmt(
-			[[
+  s(
+    "next-layout",
+    fmt(
+      [[
 export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 local shadcn_snippets = {
 
-	s(
-		"form-item",
-		fmt(
-			[[
+  s(
+    "form-item",
+    fmt(
+      [[
 <FormField
 	control={form.control}
 	name="email"
@@ -243,17 +243,17 @@ local shadcn_snippets = {
 	)}
 />
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"shadcn-dialog-imports",
-		fmt(
-			[[
+  s(
+    "shadcn-dialog-imports",
+    fmt(
+      [[
 import {
 	Dialog,
 	DialogContent,
@@ -263,17 +263,17 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog"
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"shadcn-dialog",
-		fmt(
-			[[
+  s(
+    "shadcn-dialog",
+    fmt(
+      [[
 <Dialog>
 	<DialogTrigger>Open</DialogTrigger>
 	<DialogContent>
@@ -287,17 +287,17 @@ import {
 	</DialogContent>
 </Dialog>
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"shadcn-dropdownmenu-imports",
-		fmt(
-			[[
+  s(
+    "shadcn-dropdownmenu-imports",
+    fmt(
+      [[
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -305,17 +305,17 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 					]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"shadcn-dropdownmenu",
-		fmt(
-			[[
+  s(
+    "shadcn-dropdownmenu",
+    fmt(
+      [[
 <DropdownMenu>
 	<DropdownMenuTrigger>Open</DropdownMenuTrigger>
 	<DropdownMenuContent>
@@ -324,17 +324,17 @@ import {
 	</DropdownMenuContent>
 </DropdownMenu>
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"shadcn-accordion",
-		fmt(
-			[[
+  s(
+    "shadcn-accordion",
+    fmt(
+      [[
 <Accordion type="single" collapsible>
   <AccordionItem value="foo">
     <AccordionTrigger>Open</AccordionTrigger>
@@ -342,17 +342,17 @@ import {
   </AccordionItem>
 </Accordion>
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"shadcn-accordion-imports",
-		fmt(
-			[[
+  s(
+    "shadcn-accordion-imports",
+    fmt(
+      [[
 import { cn } from "@/lib/common/utils";
 import {
   Accordion,
@@ -361,20 +361,20 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 local dnd_snippets = {
 
-	s(
-		"dnd-imports",
-		fmt(
-			[[
+  s(
+    "dnd-imports",
+    fmt(
+      [[
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
@@ -385,17 +385,17 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"dnd-context",
-		fmt(
-			[[
+  s(
+    "dnd-context",
+    fmt(
+      [[
 <DndContext onDragEnd={onDragEnd} modifiers={[restrictToVerticalAxis]}>
 	<SortableContext items={items} strategy={verticalListSortingStrategy}>
 		{items.map((item) => (
@@ -404,17 +404,17 @@ import { CSS } from "@dnd-kit/utilities";
 	</SortableContext>
 </DndContext>
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"dnd-item",
-		fmt(
-			[[
+  s(
+    "dnd-item",
+    fmt(
+      [[
 const Item: React.FC<{ id: number }> = (props) => {
   const sortable = useSortable({ id: props.id });
   const sortableStyle = {
@@ -432,17 +432,17 @@ const Item: React.FC<{ id: number }> = (props) => {
   );
 };
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"dnd-ondragend",
-		fmt(
-			[[
+  s(
+    "dnd-ondragend",
+    fmt(
+      [[
 const onDragEnd = (event: DragEndEvent) => {
 	const { active, over } = event;
 
@@ -456,19 +456,19 @@ const onDragEnd = (event: DragEndEvent) => {
 	setItems(updatedItems);
 };
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 local misc_snippets = {
-	s(
-		"zustand-store-local",
-		fmt(
-			[[
+  s(
+    "zustand-store-local",
+    fmt(
+      [[
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
@@ -491,27 +491,27 @@ export const useBearStore = create<BearStore>()(
 )
 
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 
-	s(
-		"log-with-new-lines",
-		fmt(
-			[[
+  s(
+    "log-with-new-lines",
+    fmt(
+      [[
 console.log("\n\n\n")
 console.log()
 console.log("\n\n\n")
 ]],
-			{},
-			{
-				delimiters = "`~",
-			}
-		)
-	),
+      {},
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 luasnip.add_snippets("typescriptreact", react_snippets)
