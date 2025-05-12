@@ -512,6 +512,48 @@ console.log("\n\n\n")
       }
     )
   ),
+
+  s(
+    "enum-but-good",
+    fmt(
+      [[
+export const `1~s = {
+  Foo1: 'foo-1',
+  Bar2: 'bar-2',
+} as const;
+
+export type `2~ =
+  (typeof `3~s)[keyof typeof `4~s];
+
+export function get`5~s(): readonly [`6~] {
+  return Object.values(`7~s) as [`8~];
+}
+
+export function isSupported`9~(
+  value: string,
+): value is `10~ {
+  return get`11~s().includes(value as `12~);
+}
+]],
+      {
+        i(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 luasnip.add_snippets("typescriptreact", react_snippets)
