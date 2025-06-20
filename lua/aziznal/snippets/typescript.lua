@@ -554,6 +554,25 @@ export function isSupported`9~(
       }
     )
   ),
+
+  s(
+    "is-failure",
+    fmt(
+      [[
+if (isFailure(`1~)) {
+  AppLogger.error(`2~.error);
+  return failure(new Error("Something went wrong"));
+}
+]],
+      {
+        i(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 luasnip.add_snippets("typescriptreact", react_snippets)
