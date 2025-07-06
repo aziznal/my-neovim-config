@@ -158,20 +158,29 @@ type `1~ContextType = {};
 
 const `2~Context = createContext<`3~ContextType>({} as `4~ContextType);
 
-export const use`5~Context = () => useContext(`6~Context);
+export const use`5~Context = () => {
+  const context = useContext(`6~Context);
 
-export const `7~ContextProvider = ({ children }: PropsWithChildren) => {
+  if (!context) {
+    throw new Error("Could not find context `7~Context")
+  }
+
+  return context;
+};
+
+export const `8~ContextProvider = ({ children }: PropsWithChildren) => {
   return (
-    <`8~Context.Provider
+    <`9~Context.Provider
       value={{}}
     >
       {children}
-    </`9~Context.Provider>
+    </`10~Context.Provider>
   );
 };
 ]],
       {
         i(1),
+        rep(1),
         rep(1),
         rep(1),
         rep(1),
