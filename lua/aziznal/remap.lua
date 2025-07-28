@@ -18,6 +18,9 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("n", "*", "*zz")
 vim.keymap.set("n", "#", "#zz")
 
+-- quick write
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+
 -- shortcuts for yanking to system clipboard
 vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
