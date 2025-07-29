@@ -13,5 +13,8 @@ return {
   init = function()
     -- Your DBUI configuration
     vim.g.db_ui_use_nerd_fonts = 1
+
+    -- fix for white bg notification when connecting to a db
+    vim.api.nvim_set_hl(0, "NotificationInfo", { fg = "#FFFFFF", bg = "#000000" })
   end,
 }
