@@ -569,7 +569,7 @@ export function isSupported`9~(
     fmt(
       [[
 if (isFailure(`1~)) {
-  AppLogger.error(`2~.error);
+  await udaoLog({ error: `2~.error });
   return failure(new Error("Something went wrong"));
 }
 ]],
