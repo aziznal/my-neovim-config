@@ -155,20 +155,20 @@ return {
 				},
 			},
 			openai_params = {
-				model = "gpt-4o",
+        -- @see list of models: https://platform.openai.com/settings/organization/limits
+				model = "gpt-5",
 				frequency_penalty = 0,
 				presence_penalty = 0,
 				-- actual max tokens is 8192. below count is just for response and the bandwidth for input and response is SHARED!
-				max_tokens = 4000,
-				temperature = 0,
+				max_completion_tokens = 4000,
 				top_p = 1,
 				n = 1,
+				prompt = "Provide a detailed explanation of the impact of climate change on global agriculture.",
 			},
 			openai_edit_params = {
-				model = "gpt-4o",
+				model = "gpt-5",
 				frequency_penalty = 0,
 				presence_penalty = 0,
-				temperature = 0,
 				top_p = 1,
 				n = 1,
 			},
