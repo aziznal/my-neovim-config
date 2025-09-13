@@ -10,5 +10,8 @@ return {
 			date_format = "%r",
 			virutal_text_column = 1,
 		})
+
+		vim.cmd(":cnoreabbrev gbe GitBlameEnable")
+		vim.cmd(":cnoreabbrev gbd GitBlameDisable")
 	end,
 }
