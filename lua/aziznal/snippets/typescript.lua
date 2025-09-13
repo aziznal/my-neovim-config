@@ -570,7 +570,9 @@ export function isSupported`9~(
       [[
 if (isFailure(`1~)) {
   await udaoLog({ error: `2~.error });
-  return failure(new Error("Something went wrong"));
+  return failure({
+    message: 'Something went wrong',
+  });
 }
 ]],
       {
