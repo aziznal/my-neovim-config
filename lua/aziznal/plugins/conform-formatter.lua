@@ -24,6 +24,30 @@ return {
 
         sql = { "pg_format", stop_after_first = true },
       },
+
+      formatters = {
+        pg_format = {
+          -- keep stdin (pg_format supports it)
+          stdin = true,
+          -- add your flags; each token is a separate item
+          prepend_args = {
+            -- function-case -> lowercase
+            "-f",
+            "1",
+
+            -- keyword-case -> lowercase
+            "-u",
+            "1",
+
+            -- indent size -> 2
+            "-s",
+            "2",
+
+            "--no-space-function",
+            "--redundant-parenthesis",
+          },
+        },
+      },
     })
 
     -- format shortcut
