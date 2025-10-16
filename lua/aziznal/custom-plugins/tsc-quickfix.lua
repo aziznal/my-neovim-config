@@ -1,9 +1,11 @@
 -- [[
---		Runs the command `npx tsc --noEmit --pretty true` and parses the summary lines
+--		Runs the command `tsgo --noEmit --pretty true` and parses the summary lines
 --    at the end into the quickfix list (one entry per file) using Lua patterns.
 --    Handles single-file, multi-file, and multi-error-same-file summary formats.
 --
---		Shamefully vibe-coded with the help of gemini-2.5pro (in like 15 iterations)
+--    install tsgo with `npm i -g @typescript/native-preview`
+--
+--		(Some of this code is) Shamefully vibe-coded with the help of gemini-2.5pro (in like 15 iterations)
 -- ]]
 
 ---@diagnostic disable: missing-fields
@@ -83,7 +85,7 @@ local function parse_tsc_summary(tsc_output_lines)
   return qf_list
 end
 
---- Runs 'npx tsc --noEmit --pretty true', parses the summary output,
+--- Runs 'tsgo --noEmit --pretty true', parses the summary output,
 --- and populates the quickfix list with one entry per file.
 ---@nodiscard Does not return a value, operates via side effects (job, quickfix).
 function M.run_tsc_check()
@@ -146,19 +148,19 @@ function M.run_tsc_check()
   }
 
   ---@type number|nil job_id The started job's ID or nil on failure.
-  local job_id = vim.fn.jobstart({ "npx", "tsc", "--noEmit", "--incremental", "--pretty", "true" }, job_options)
+  local job_id = vim.fn.jobstart({ "tsgo", "--incremental", "--pretty", "true" }, job_options)
 
   if not job_id or job_id == 0 or job_id == -1 then
-    vim.notify("Failed to start npx tsc job.", vim.log.levels.ERROR)
+    vim.notify("Failed to start tsgo job.", vim.log.levels.ERROR)
     return
   end
 
-  vim.notify("Running npx tsc --noEmit --pretty true...", vim.log.levels.INFO)
+  vim.notify("Running tsgo --noEmit --pretty true...", vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_user_command("TscCheck", M.run_tsc_check, {
   nargs = 0,
-  desc = "Run npx tsc --pretty true, list files with errors in quickfix",
+  desc = "Run tsgo --pretty true, list files with errors in quickfix",
   force = true,
 })
 
