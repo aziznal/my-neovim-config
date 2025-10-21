@@ -148,7 +148,7 @@ function M.run_tsc_check()
   }
 
   ---@type number|nil job_id The started job's ID or nil on failure.
-  local job_id = vim.fn.jobstart({ "tsgo", "--incremental", "--pretty", "true" }, job_options)
+  local job_id = vim.fn.jobstart({ "tsgo", "--pretty", "true" }, job_options)
 
   if not job_id or job_id == 0 or job_id == -1 then
     vim.notify("Failed to start tsgo job.", vim.log.levels.ERROR)
