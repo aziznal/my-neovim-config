@@ -1,19 +1,8 @@
 -- [[
---    Runs `pnpm lint:check` (ESLint) and parses output into the quickfix list.
---    Handles common ESLint formats:
---      - "stylish" (default): file header lines + "  line:col  level  message  rule"
---      - "unix": "path:line:col: level message [rule]"
+--    Runs `npx eslint` and parses output into the quickfix list.
 --
---    Assumptions:
---      - Your pnpm script `lint:check` prints ESLint results using either
---        the default "stylish" or "unix" formatter.
---      - Lines can contain ANSI color; we strip those.
---
---    Create command :EslintCheck to run it.
+--    Exposes :EslintCheck
 -- ]]
-
----@diagnostic disable: missing-fields
----@diagnostic disable: unused-local
 
 ---@class EslintQuickFixItem : vim.quickfix.entry
 -- Represents a single ESLint issue entry for the quickfix list.
@@ -237,19 +226,25 @@ function M.run_eslint_check()
     end,
   }
 
-  local job_id = vim.fn.jobstart({ "pnpm", "lint:check" }, job_options)
+  local job_id = vim.fn.jobstart({ "npx", "eslint" }, job_options)
 
   if not job_id or job_id == 0 or job_id == -1 then
     vim.notify("Failed to start ESLint job (pnpm lint:check).", vim.log.levels.ERROR)
     return
   end
 
-  vim.notify("Running pnpm lint:check ...", vim.log.levels.INFO)
+  vim.notify("Running npx eslint ...", vim.log.levels.INFO)
 end
 
 vim.api.nvim_create_user_command("EslintCheck", M.run_eslint_check, {
   nargs = 0,
-  desc = "Run pnpm lint:check and populate ESLint issues in quickfix",
+  desc = "Run npx eslint and populate ESLint issues in quickfix",
+  force = true,
+})
+
+vim.api.nvim_create_user_command("Escheck", M.run_eslint_check, {
+  nargs = 0,
+  desc = "Run npx eslint and populate ESLint issues in quickfix",
   force = true,
 })
 
