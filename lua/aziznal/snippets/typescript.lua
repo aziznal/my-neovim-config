@@ -156,7 +156,7 @@ import { PropsWithChildren, createContext, useContext } from "react";
 
 type `1~ContextType = {};
 
-const `2~Context = createContext<`3~ContextType>({} as `4~ContextType);
+const `2~Context = createContext<`3~ContextType>(null as unknown as `4~ContextType);
 
 export const use`5~Context = () => {
   const context = useContext(`6~Context);
