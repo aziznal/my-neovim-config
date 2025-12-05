@@ -584,6 +584,22 @@ if (isFailure(`1~)) {
       }
     )
   ),
+
+  s(
+    "is-failure-inline",
+    fmt(
+      [[
+if (isFailure(`1~)) return failure(`2~.error);
+]],
+      {
+        i(1),
+        rep(1),
+      },
+      {
+        delimiters = "`~",
+      }
+    )
+  ),
 }
 
 luasnip.add_snippets("typescriptreact", react_snippets)
