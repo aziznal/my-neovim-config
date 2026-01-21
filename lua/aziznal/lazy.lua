@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "aziznal.plugins" },
+	{ import = "aziznal.plugins.lsp" },
 }, {
 	checker = {
 		enabled = false,

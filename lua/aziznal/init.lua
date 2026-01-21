@@ -1,6 +1,7 @@
 require("aziznal.remap")
 require("aziznal.set")
 require("aziznal.lazy")
+require("aziznal.lsp")
 require("aziznal.autocmds")
 require("aziznal.custom-plugins.tsc-quickfix")
 require("aziznal.custom-plugins.color-format-converter")
