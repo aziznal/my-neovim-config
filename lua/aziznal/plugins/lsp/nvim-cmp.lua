@@ -89,6 +89,7 @@ return {
         { name = "luasnip" },
         { name = "path" },
         { name = "lspkind" },
+        { name = "lazydev" },
       },
       formatting = {
         format = lspkind.cmp_format({

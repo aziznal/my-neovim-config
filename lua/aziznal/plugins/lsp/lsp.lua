@@ -4,6 +4,7 @@ return {
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-nvim-lsp" },
     { "j-hui/fidget.nvim", opts = {} },
+    { "folke/lazydev.nvim", opts = {} },
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
