@@ -47,9 +47,21 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --  For example, in C this would take you to the header
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-    -- keymap to restart lsp since some like to crash
+    -- keymap to restart lsp LSPs attached to the current buffer (including
+    -- non-native like typescript-tools) since some like to crash
     map("<leader><leader>r", function()
-      vim.cmd("LspRestart")
-    end, "Restart LspServer")
+      local bufnr = vim.api.nvim_get_current_buf()
+      local clients = vim.lsp.get_clients({ bufnr = bufnr })
+      if #clients == 0 then
+        return
+      end
+
+      for _, client in ipairs(clients) do
+        client:stop(true)
+      end
+
+      -- reload buffer to trigger reattach/autostart
+      vim.cmd("silent! edit")
+    end, "Restart LSP (buffer)")
   end,
 })
