@@ -9,7 +9,7 @@ return {
         "html",
         "emmet_ls",
         "cssls",
-        "tailwindcss-language-server",
+        "tailwindcss",
       },
     },
     dependencies = {
