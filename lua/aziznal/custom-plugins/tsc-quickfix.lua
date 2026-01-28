@@ -162,6 +162,6 @@ vim.api.nvim_create_user_command("TscCheck", M.run_tsc_check, {
   nargs = 0,
   desc = "Run tsgo --pretty true, books_books_list files with errors in quickfix",
   force = true,
-books_books_})
+})
 
 return M
