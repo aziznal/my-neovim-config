@@ -156,31 +156,26 @@ import { PropsWithChildren, createContext, useContext } from "react";
 
 type `1~ContextType = {};
 
-const `2~Context = createContext<`3~ContextType>(null as unknown as `4~ContextType);
+const `2~Context = createContext<`3~ContextType | null>(null);
 
-export const use`5~Context = () => {
-  const context = useContext(`6~Context);
-
-  if (!context) {
-    throw new Error("Could not find context `7~Context")
-  }
-
+export const use`4~Context = () => {
+  const context = useContext(`5~Context);
+  if (!context) throw new Error("Could not find context `6~Context");
   return context;
 };
 
-export const `8~ContextProvider = ({ children }: PropsWithChildren) => {
+export const `7~ContextProvider = ({ children }: PropsWithChildren) => {
   return (
-    <`9~Context.Provider
+    <`8~Context.Provider
       value={{}}
     >
       {children}
-    </`10~Context.Provider>
+    </`9~Context.Provider>
   );
 };
 ]],
       {
         i(1),
-        rep(1),
         rep(1),
         rep(1),
         rep(1),
