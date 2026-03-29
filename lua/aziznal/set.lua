@@ -50,5 +50,14 @@ vim.cmd("set splitright splitbelow")
 -- folds
 vim.cmd("set foldcolumn=1")
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- Start with all folds open (prevents everything collapsing when opening a file)
+vim.opt.foldlevel = 99
+function _G.CustomFoldText()
+    return vim.fn.getline(vim.v.foldstart) .. ' ... ' .. vim.fn.getline(vim.v.foldend):gsub("^%s*", "")
+end
+vim.opt.foldtext = 'v:lua.CustomFoldText()'
+
 vim.opt.winblend = 0
 vim.opt.winborder = "rounded"
