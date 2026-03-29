@@ -44,7 +44,7 @@ vim.opt.ignorecase = true
 -- automatically switch to case-sensitive if a capital letter is used
 vim.opt.smartcase = true
 
--- make new splits go below and to the right of the current pane
+-- make new splits go below and to the right of the current pane, as opposed to the left and above
 vim.cmd("set splitright splitbelow")
 
 -- folds
