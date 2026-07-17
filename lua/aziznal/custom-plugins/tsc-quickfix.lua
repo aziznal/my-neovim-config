@@ -18,6 +18,47 @@
 ---@field run_tsc_check fun():nil
 local M = {}
 
+--- Constant identifier for our quickfix list. used to always reuse the same
+--- list instead of pushing a new one onto the stack every run.
+local TSC_QF_TITLE = "TSC File Errors (Summary)"
+
+--- Finds the id of an existing quickfix list whose title matches TSC_QF_TITLE.
+---@return integer|nil id The id of the matching list, or nil if none exists.
+local function find_tsc_qf_id()
+  local stack_size = vim.fn.getqflist({ nr = "$" }).nr
+  for nr = 1, stack_size do
+    local info = vim.fn.getqflist({ nr = nr, id = 0, title = 0 })
+    if info.title == TSC_QF_TITLE then
+      return info.id
+    end
+  end
+  return nil
+end
+
+--- Writes items into our dedicated quickfix list, reusing it if it already
+--- exists (replace in place by id) or creating it once otherwise. Also makes
+--- the list "current" so copen/cclose/cc act on it.
+---@param items TscQuickFixItem[] The quickfix entries to set.
+local function set_tsc_qflist(items)
+  local id = find_tsc_qf_id()
+  if id then
+    vim.fn.setqflist({}, "r", { id = id, title = TSC_QF_TITLE, items = items })
+
+    -- Replacing by id doesn't change which list is current, so navigate the
+    -- stack to make ours current (needed for copen/cclose to target it).
+    local target_nr = vim.fn.getqflist({ id = id, nr = 0 }).nr
+    local current_nr = vim.fn.getqflist({ nr = 0 }).nr
+    local delta = target_nr - current_nr
+    if delta > 0 then
+      vim.cmd("silent " .. delta .. "cnewer")
+    elseif delta < 0 then
+      vim.cmd("silent " .. -delta .. "colder")
+    end
+  else
+    vim.fn.setqflist({}, " ", { title = TSC_QF_TITLE, items = items })
+  end
+end
+
 --- Strips ANSI escape codes from a string.
 ---@param str string The input string potentially containing ANSI codes.
 ---@return string str_clean The string with ANSI codes removed.
@@ -127,15 +168,15 @@ function M.run_tsc_check()
       local qf_list = parse_tsc_summary(output_lines)
 
       if #qf_list > 0 then
-        vim.fn.setqflist({}, " ", { title = "TSC File Errors (Summary)", items = qf_list })
+        set_tsc_qflist(qf_list)
         vim.cmd("copen")
         vim.notify("TSC check finished. Found errors in " .. #qf_list .. " file(s).", vim.log.levels.INFO)
       elseif code == 0 then
-        vim.fn.setqflist({}, "r", { title = "TSC File Errors (Summary)", items = {} })
+        set_tsc_qflist({})
         vim.cmd("cclose")
         vim.notify("TSC check finished. No errors found.", vim.log.levels.INFO)
       elseif code ~= 0 and #qf_list == 0 then
-        vim.fn.setqflist({}, "r", { title = "TSC File Errors (Summary)", items = {} })
+        set_tsc_qflist({})
         vim.cmd("cclose")
         vim.notify("TSC check failed or produced no parsable summary lines. Exit code: " .. code, vim.log.levels.WARN)
         vim.notify("--- Raw TSC Output Start (Failure Case) ---", vim.log.levels.INFO)
